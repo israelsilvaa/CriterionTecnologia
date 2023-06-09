@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VisitanteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('visitante.index');
 });
+
+Route::get('/login', [VisitanteController::class, 'modelos'])->name('modelos');
+Route::get('/modelos', [VisitanteController::class, 'modelos'])->name('modelos');
+Route::get('/garantia', [VisitanteController::class, 'garantia'])->name('garantia');
+

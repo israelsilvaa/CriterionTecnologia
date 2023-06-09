@@ -1,0 +1,49 @@
+#instalar laravel do zero:
+composer create-project laravel/laravel example-app
+
+#inicializar projeto clonado:
+composer install
+php artisan key:generate
+
+Criar Model:
+php artisan make:model Nome
+
+Criar Controller:
+php artisan make:controller nomeController
+
+Migrations:
+php artisan migrate
+php artisan migrate:status
+php artisan migration:reset
+php artisan make:migration nomedatabela_table
+
+// 01 criar projeto dentro de uma pasta
+    - composer create-project laravel/laravel NomeDoProjeto 
+
+// 02 conexão com banco de dados e migrates padroes 
+    - criar banco
+    - atualizar no arquivo .env: nome do banco, usuario e senha.
+    
+    # executar migraçoes padroes do laravel 
+    - php artisan migrate.
+
+// 03 Login nativo do laravel
+
+    # recursos
+    - instalar executavies NodeJS e NPM.
+
+    - composer require laravel/ui
+        // ver lista de comandos UI adicionados
+        -php artisan list
+    
+    - php artisan ui bootstrap --auth
+        -npm install
+        -npm run dev
+
+    nesse momento a tela de login e registro ja deve estar funcionando totalmente :)
+    
+
+// 000 implementação do middleware auth, para proteger rotas novas
+
+    # criaçao de um controler e model com metodos padrões para persistencia de dados.
+    -php artisan make:controller --resource TarefaController --model=Tarefa
