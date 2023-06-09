@@ -13,4 +13,8 @@ class VisitanteController extends Controller
     public function garantia(){
         return view('visitante.garantia');
     }
+ 
+    public function login(){
+        return view('admin.login');
+    }
 }
