@@ -50,9 +50,9 @@
                             <tr>
                                 <td>{{$produto->marca_id}}</td>
                                 <td>{{$produto->modelo_id}}</td>
-                                <td>{{$produto->tamanho_id}}</td>
+                                <td>{{$produto->capacidade_id}}</td>
                                 <td>{{$produto->tipo_id}}</td>
-                                <td>--------</td>
+                                <td>{{$produto->numero_serie}}</td>
                                 <td>{{$produto->aplicacao_id}}</td>
                             </tr>
                         @endforeach
@@ -63,22 +63,25 @@
                     <thead>
                         <tr>
                             <th scope="col">Cliente</th>
-                            <th scope="col">compra</th>
                             <th scope="col">N/S</th>
                             <th scope="col">valor</th>
+                            <th scope="col">compra</th>
                             <th scope="col">Vencimento</th>
                             <th scope="col">Resumo</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>joão da silva</td>
-                            <td>01/01/2023</td>
-                            <td>44444444</td>
-                            <td>R$ 210</td>
-                            <td>01/02/2023</td>
-                            <td>ainda está na garantia</td>
-                        </tr>
+                        @foreach ($listaVendas as $venda )    
+                            <tr>
+                                <td>{{$venda->cliente}}</td>
+                                <td>{{$venda->numero_serie}}</td>
+                                <td>{{$venda->preco_venda}}</td>
+                                <td>{{$venda->data_venda}}</td>
+                                <td>{{$venda->data_garantia}}</td>
+                                <td>{{$venda->observacao}}</td>
+                                
+                            </tr>
+                        @endforeach    
                     </tbody>
                 </table>
                 </p>

@@ -13,7 +13,7 @@
             <h2 class="text-center">Novo produto</h2>
             <div class="col-12">
                 <h6 class="text-center">Informações do produto</h6>
-                <form action="{{route('admin.cadastroVenda')}}" method="post">
+                <form action="{{route('admin.cadastroProduto')}}" method="post">
                     @csrf
 
                     <label for="nome_marca">Marca</label>

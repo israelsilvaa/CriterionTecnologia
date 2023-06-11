@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Aplicacoes;
 use App\Models\Capacidade;
 use App\Models\Importacao;
@@ -11,6 +12,7 @@ use App\Models\Produto;
 use App\Models\produto_detalhe;
 use App\Models\Tipo;
 use App\Models\Velocidade;
+use App\Models\Venda;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,31 +20,35 @@ class AdminController extends Controller
     public function viewPainel(){
 
         $listaProdutos = Produto::all();
-        $listaDetalhes = produto_detalhe::all();
-
+        
         foreach ($listaProdutos as $produto){
-            foreach($listaDetalhes as $detalhe){
+            $listaDetalhes = produto_detalhe::where('produto_id', '=', $produto->id)->get()->first();
+            
+            $marca = Marca::where('id', '=', $listaDetalhes->marca_id)->get()->pluck('nome_marca')->first();
+            $produto->marca_id = $marca;
+            
+            $modelo = Modelo::where('id', '=', $listaDetalhes->modelo_id)->get()->pluck('nome_modelo')->first();
+            $produto->modelo_id = $modelo;
+            
+            $capacidade = Capacidade::where('id', '=', $listaDetalhes->capacidade_id)->get()->pluck('tamanho')->first();
+            $produto->capacidade_id = $capacidade;
+            
+            $tipo = Tipo::where('id', '=', $listaDetalhes->tipo_id)->get()->pluck('nome_tipo')->first();
+            $produto->tipo_id = $tipo;
+            
+            $aplicacao = Aplicacoes::where('id', '=', $listaDetalhes->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
+            $produto->aplicacao_id = $aplicacao;
+        }
 
-                $marca = Marca::where('id', '=', $detalhe->marca_id)->get()->pluck('nome_marca')->first();
-                $produto->marca_id = $marca;
-
-                $modelo = Modelo::where('id', '=', $detalhe->modelo_id)->get()->pluck('nome_modelo')->first();
-                $produto->modelo_id = $modelo;
-                
-                $capacidade = Capacidade::where('id', '=', $detalhe->capacidade_id)->get()->pluck('tamanho')->first();
-                $produto->capacidade_id = $capacidade;
-                
-                $tipo = Tipo::where('id', '=', $detalhe->tipo_id)->get()->pluck('nome_tipo')->first();
-                $produto->tipo_id = $tipo;
-
-                $aplicacao = Aplicacoes::where('id', '=', $detalhe->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
-                $produto->aplicacao_id = $aplicacao;
-            }
-
+        $listaVendas = Venda::all();
+        foreach ($listaVendas as $venda){
+            $numero_serie = Produto::where('id', '=', $venda->produto_id)->get()->pluck('numero_serie')->first();
+            $venda->numero_serie = $numero_serie;
         }
 
 
-        return view('admin.painel',  ['listaProdutos' => $listaProdutos, 'listaDetalhes'=> $listaDetalhes]);
+
+        return view('admin.painel',  ['listaProdutos' => $listaProdutos, 'listaDetalhes'=> $listaDetalhes, 'listaVendas'=> $listaVendas]);
     }
 
     public function viewCadastroProduto(){
@@ -87,12 +93,32 @@ class AdminController extends Controller
         $produto_detalhe->aplicacao_id = $request->nome_aplicacao;
         $produto_detalhe->save();
 
-        $teste = produto_detalhe::all();
-        echo '<pre>';
-        print_r($teste);
-        echo '</pre>';   
+        return view('admin.cadastroVenda');
+    }
+
+    public function storeVenda(Request $request){
+
+        $id_produto = Produto::where('numero_serie', '=', $request->numero_serie)
+        ->get()
+        ->pluck('id')
+        ->first();
+        
+        $venda = new Venda();
+        $venda->produto_id = $id_produto;
+        $venda->cliente = $request->cliente;
+        $venda->data_venda = $request->data_venda;
+        
+        $data_garantia = now('America/Belem')->create($request->data_venda)
+            ->addMonth();
+
+        $venda->data_garantia = $data_garantia;
+        $venda->preco_venda = $request->valor;
+        $venda->observacao = $request->observacao;
+        
+        $venda->save();  
 
         return view('admin.cadastroVenda');
     }
+
 
 }
