@@ -33,6 +33,7 @@ Route::prefix('/admin')->group(function(){
     Route::get('/viewPainel', [AdminController::class, 'viewPainel'])->name('admin.painel');
     Route::get('/cadastarProduto', [AdminController::class, 'viewCadastroProduto'])->name('admin.cadastroProduto');
     Route::get('/cadastarVenda', [AdminController::class, 'viewCadastroVenda'])->name('admin.cadastroVenda');
+    Route::post('/cadastarVenda', [AdminController::class, 'store'])->name('admin.cadastroVenda');
 });
 
 
