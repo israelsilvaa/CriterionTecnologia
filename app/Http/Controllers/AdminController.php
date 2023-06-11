@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Aplicacoes;
 use App\Models\Capacidade;
 use App\Models\Importacao;

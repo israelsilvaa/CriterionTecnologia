@@ -13,7 +13,7 @@
     <title>@yield('titulo')</title>
 </head>
 
-<body class="fundo">
+<body class="bg-light">
 
     @yield('conteudo')
 
