@@ -12,9 +12,10 @@
         <div class="row">
             <div class="col-md mt-2">
                 <h1 class="text-center">Garantia</h1>
-                <form action="" method="post" class="text-center">
+                <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center">
+                    @csrf
                     <label for="">Número de série:</label>
-                    <input type="number" name="" id="" placeholder="">
+                    <input type="number" name="numero_serie" id="" placeholder="">
 
                     <a href="index.html" class="btn btn-success">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -36,13 +37,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
+                        @if(isset($produto))
+                            <tr>
+                                <td>{{$produto->marca_id}}</td>
+                                <td>{{$produto->modelo_id}}</td>
+                                <td>{{$produto->numero_serie}}</td>
+                                <td>{{$produto->capacidade_id}}</td>
+                                <td>{{$produto->tipo_id}}</td>                      
+                            </tr>
+                        @else
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
                 <table class="table table-dark">
@@ -52,22 +63,30 @@
                             <th scope="col">Data da compra</th>
                             <th scope="col">valor</th>
                             <th scope="col">Vencimento</th>
-                            <th scope="col">Resumo</th>
+                            <th scope="col">Observação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
+                        @if(isset($venda))
+                            <tr>
+                                <td>{{$venda->cliente}}</td>
+                                <td>{{$venda->data_venda}}</td>
+                                <td>{{$venda->preco_venda}}</td>
+                                <td>{{$venda->data_garantia}}</td>
+                                <td>{{$venda->observacao}}</td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
                 </p>
-
-                <p>Observações sobre a venda: ...</p>
 
                 <div class="row border border-dark">
                     <div class="col-md-6">
@@ -93,7 +112,6 @@
                     </div>
                 </div>
 
-                
             </div>
         </div>
 

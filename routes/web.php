@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::prefix('/visitante')->group(function(){
     Route::get('/modelos', [VisitanteController::class, 'modelos'])->name('visitante.modelos');
     Route::get('/garantia', [VisitanteController::class, 'garantia'])->name('visitante.garantia');
+    Route::post('/garantiaShow', [VisitanteController::class, 'show'])->name('visitante.verificarGarantia');
 });
 
 Route::get('/login', [LoginController::class, 'formLogin'])->name('login');
@@ -31,8 +32,12 @@ Route::post('/login', [LoginController::class, 'logar'])->name('logar');
 
 Route::prefix('/admin')->group(function(){
     Route::get('/viewPainel', [AdminController::class, 'viewPainel'])->name('admin.painel');
+
     Route::get('/cadastarProduto', [AdminController::class, 'viewCadastroProduto'])->name('admin.cadastroProduto');
+    Route::post('/cadastarProduto', [AdminController::class, 'store'])->name('admin.cadastroProduto');
+    
     Route::get('/cadastarVenda', [AdminController::class, 'viewCadastroVenda'])->name('admin.cadastroVenda');
+    Route::post('/cadastarVenda', [AdminController::class, 'storeVenda'])->name('admin.cadastroVenda');
 });
 
 
