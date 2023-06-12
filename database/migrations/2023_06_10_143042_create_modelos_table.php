@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('modelos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('marca_id');
             $table->string('nome_modelo', 50);
+
+            //constraint
+            $table->foreign('marca_id')->references('id')->on('marcas');
         });
     }
 

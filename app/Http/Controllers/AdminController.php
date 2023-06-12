@@ -19,35 +19,38 @@ class AdminController extends Controller
     public function viewPainel(){
 
         $listaProdutos = Produto::all();
-        
-        foreach ($listaProdutos as $produto){
-            $listaDetalhes = produto_detalhe::where('produto_id', '=', $produto->id)->get()->first();
+  
+        if ($listaProdutos){
             
-            $marca = Marca::where('id', '=', $listaDetalhes->marca_id)->get()->pluck('nome_marca')->first();
-            $produto->marca_id = $marca;
-            
-            $modelo = Modelo::where('id', '=', $listaDetalhes->modelo_id)->get()->pluck('nome_modelo')->first();
-            $produto->modelo_id = $modelo;
-            
-            $capacidade = Capacidade::where('id', '=', $listaDetalhes->capacidade_id)->get()->pluck('tamanho')->first();
-            $produto->capacidade_id = $capacidade;
-            
-            $tipo = Tipo::where('id', '=', $listaDetalhes->tipo_id)->get()->pluck('nome_tipo')->first();
-            $produto->tipo_id = $tipo;
-            
-            $aplicacao = Aplicacoes::where('id', '=', $listaDetalhes->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
-            $produto->aplicacao_id = $aplicacao;
+            foreach ($listaProdutos as $produto){
+                $listaDetalhes = produto_detalhe::where('produto_id', '=', $produto->id)->get()->first();
+                
+                $marca = Marca::where('id', '=', $listaDetalhes->marca_id)->get()->pluck('nome_marca')->first();
+                $produto->marca_id = $marca;
+                
+                $modelo = Modelo::where('id', '=', $listaDetalhes->modelo_id)->get()->pluck('nome_modelo')->first();
+                $produto->modelo_id = $modelo;
+                
+                $capacidade = Capacidade::where('id', '=', $listaDetalhes->capacidade_id)->get()->pluck('tamanho')->first();
+                $produto->capacidade_id = $capacidade;
+                
+                $tipo = Tipo::where('id', '=', $listaDetalhes->tipo_id)->get()->pluck('nome_tipo')->first();
+                $produto->tipo_id = $tipo;
+                
+                $aplicacao = Aplicacoes::where('id', '=', $listaDetalhes->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
+                $produto->aplicacao_id = $aplicacao;
+            }
+
+            $listaVendas = Venda::all();
+            foreach ($listaVendas as $venda){
+                $numero_serie = Produto::where('id', '=', $venda->produto_id)->get()->pluck('numero_serie')->first();
+                $venda->numero_serie = $numero_serie;
+            }
+            return view('admin.painel',  ['listaProdutos' => $listaProdutos, 'listaDetalhes'=> $listaDetalhes, 'listaVendas'=> $listaVendas]);
+        }else{
+            return view('admin.painel');
         }
 
-        $listaVendas = Venda::all();
-        foreach ($listaVendas as $venda){
-            $numero_serie = Produto::where('id', '=', $venda->produto_id)->get()->pluck('numero_serie')->first();
-            $venda->numero_serie = $numero_serie;
-        }
-
-
-
-        return view('admin.painel',  ['listaProdutos' => $listaProdutos, 'listaDetalhes'=> $listaDetalhes, 'listaVendas'=> $listaVendas]);
     }
 
     public function viewCadastroProduto(){
@@ -65,23 +68,23 @@ class AdminController extends Controller
     public function viewCadastroVenda(){
         return view('admin.cadastroVenda');
     }
-
+    
     public function store(Request $request){
         $produto = new Produto();
         $produto->numero_serie = $request->numero_serie;
         $produto->save();
-
+        
         $id_produto = Produto::where('numero_serie', '=', $request->numero_serie)
-            ->get()
-            ->pluck('id')
-            ->first();
+        ->get()
+        ->pluck('id')
+        ->first();
         $importacao = new Importacao();
         $importacao->produto_id = $id_produto;
         $importacao->preco_importacao = $request->preco_importacao;
         $importacao->data_pedido = $request->data_pedido;
         $importacao->data_chegada = $request->data_chegada;
         $importacao->save();
-
+        
         $produto_detalhe = new produto_detalhe();
         $produto_detalhe->produto_id = $id_produto;
         $produto_detalhe->marca_id = $request->nome_marca;
@@ -91,12 +94,12 @@ class AdminController extends Controller
         $produto_detalhe->velocidade_id = $request->velocidade;
         $produto_detalhe->aplicacao_id = $request->nome_aplicacao;
         $produto_detalhe->save();
-
+        
         return view('admin.cadastroVenda');
     }
-
+    
     public function storeVenda(Request $request){
-
+        
         $id_produto = Produto::where('numero_serie', '=', $request->numero_serie)
         ->get()
         ->pluck('id')
@@ -108,16 +111,32 @@ class AdminController extends Controller
         $venda->data_venda = $request->data_venda;
         
         $data_garantia = now('America/Belem')->create($request->data_venda)
-            ->addMonth();
-
+        ->addMonth();
+        
         $venda->data_garantia = $data_garantia;
         $venda->preco_venda = $request->valor;
         $venda->observacao = $request->observacao;
         
         $venda->save();  
-
+        
         return view('admin.cadastroVenda');
     }
-
-
+    
+    // cadastro de Marca, modelos, tipos, etc
+    public function viewCadastroEspecificacoes(){
+        
+        $listaMarca = Marca::all();
+        $listaModelo = Modelo::all();
+        $listaTipo = Tipo::all();
+        
+        return view('admin.cadastroEspecificacoes', ['listaMarca' => $listaMarca, 'listaModelo' => $listaModelo, 'listaTipo' => $listaTipo]);
+    }
+    
+    public function cadastroTipo(Request $request){
+        $novoTipo = new Tipo();
+        dd($request);
+        $novoTipo->nome_tipo =$request->nome;
+        $novoTipo->save();
+        return redirect()->route('admin.cadastroEspecificacoes');
+    }
 }

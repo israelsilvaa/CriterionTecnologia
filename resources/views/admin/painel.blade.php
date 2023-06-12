@@ -13,7 +13,15 @@
             <div class="col-md">
                 <h1 class="text-center">Painel</h1>
                 <div class="row text-center">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M248 0H208c-26.5 0-48 21.5-48 48V160c0 35.3 28.7 64 64 64H352c35.3 0 64-28.7 64-64V48c0-26.5-21.5-48-48-48H328V80c0 8.8-7.2 16-16 16H264c-8.8 0-16-7.2-16-16V0zM64 256c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H224c35.3 0 64-28.7 64-64V320c0-35.3-28.7-64-64-64H184v80c0 8.8-7.2 16-16 16H120c-8.8 0-16-7.2-16-16V256H64zM352 512H512c35.3 0 64-28.7 64-64V320c0-35.3-28.7-64-64-64H472v80c0 8.8-7.2 16-16 16H408c-8.8 0-16-7.2-16-16V256H352c-15 0-28.8 5.1-39.7 13.8c4.9 10.4 7.7 22 7.7 34.2V464c0 12.2-2.8 23.8-7.7 34.2C323.2 506.9 337 512 352 512z" />
+                        </svg>
+                        <a href="{{ route('admin.cadastroEspecificacoes') }}" class="link link-dark ">Cadatrar Especificações</a>
+                    </div>
+                    <div class="col-md-4">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
                             <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                             <path
@@ -22,7 +30,7 @@
                         <a href="{{ route('admin.cadastroProduto') }}" class="link link-dark ">Cadatrar Produto</a>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                             <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                             <path
@@ -46,16 +54,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach( $listaProdutos as $produto)
-                            <tr>
-                                <td>{{$produto->marca_id}}</td>
-                                <td>{{$produto->modelo_id}}</td>
-                                <td>{{$produto->capacidade_id}}</td>
-                                <td>{{$produto->tipo_id}}</td>
-                                <td>{{$produto->numero_serie}}</td>
-                                <td>{{$produto->aplicacao_id}}</td>
-                            </tr>
-                        @endforeach
+                        @if(isset($listaVendas))
+                            @foreach( $listaProdutos as $produto)
+                                <tr>
+                                    <td>{{$produto->marca_id}}</td>
+                                    <td>{{$produto->modelo_id}}</td>
+                                    <td>{{$produto->capacidade_id}}</td>
+                                    <td>{{$produto->tipo_id}}</td>
+                                    <td>{{$produto->numero_serie}}</td>
+                                    <td>{{$produto->aplicacao_id}}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
                 <h4>Ultimas Vendas</h4>
@@ -71,17 +81,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($listaVendas as $venda )    
-                            <tr>
-                                <td>{{$venda->cliente}}</td>
-                                <td>{{$venda->numero_serie}}</td>
-                                <td>{{$venda->preco_venda}}</td>
-                                <td>{{$venda->data_venda}}</td>
-                                <td>{{$venda->data_garantia}}</td>
-                                <td>{{$venda->observacao}}</td>
-                                
-                            </tr>
-                        @endforeach    
+                        @if(isset($listaVendas))
+                            @foreach ($listaVendas as $venda )    
+                                <tr>
+                                    <td>{{$venda->cliente}}</td>
+                                    <td>{{$venda->numero_serie}}</td>
+                                    <td>{{$venda->preco_venda}}</td>
+                                    <td>{{$venda->data_venda}}</td>
+                                    <td>{{$venda->data_garantia}}</td>
+                                    <td>{{$venda->observacao}}</td>
+                                </tr>
+                            @endforeach    
+                        @endif
                     </tbody>
                 </table>
                 </p>

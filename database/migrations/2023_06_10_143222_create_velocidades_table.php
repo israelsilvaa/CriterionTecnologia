@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('velocidades', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tipo_id');
             $table->string('leitura', 50);
             $table->string('escrita', 50);
             $table->timestamps();
+            
+            //constraint
+            $table->foreign('tipo_id')->references('id')->on('tipos');            
         });
     }
 
