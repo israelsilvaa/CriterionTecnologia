@@ -14,7 +14,7 @@
 
             <div class="col-12">
                 <h6 class="text-center">Informações do produto</h6>
-                <table >
+                <table>
                     <thead>
                         <th> </th>
                         <th></th>
@@ -27,87 +27,115 @@
                         <tr>
                             <td>Marca</td>
                             <td colspan="2">
-                                <input type="text" name="nome" id="" placeholder="Nova marca TEChTudo">
+                                <form action="{{ route('admin.cadastroMarca') }}" method="POST">
+                                    @csrf
+                                <input type="text" name="nome_marca" id="" placeholder="KingSpec-2">
                             </td>
-                            <td><form action=""><button class="btn btn-success" type="submit">cadastrar</button></form></td>
+                            <td>
+                                <button class="btn btn-success" type="submit">cadastrar</button>
+                                </form>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Modelo</td>
-                            <td>
-                                <select name="nome" id="">
-                                    <option value="0" selected>selecione a marca</option>
-                                    @foreach ($listaMarca as $marca )
-                                        <option value="1">{{$marca->nome_marca}}</option>
+                            <td><form action="{{ route('admin.cadastroModelo') }}" method="POST">
+                                @csrf
+                                <select name="marca_id" id="">
+                                    <option value="0" selected>Selecione a Marca</option>
+                                    @foreach ($listaMarca as $marca)
+                                        <option value="1">{{ $marca->nome_marca }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="nome" id="" placeholder="Novo modelo 2023">
+                                <input type="text" name="nome_modelo" id="" placeholder="Novo modelo 2023">
                             </td>
-                            <td><form action=""><button class="btn btn-success" type="submit">cadastrar</button></form></td>
+                            <td>
+                                <button class="btn btn-success" type="submit">cadastrar</button>
+                                </form>
+                            </td>
                         </tr>
                         <tr>
                             <td>Tipo</td>
                             <td>
-                                <select name="" id="">
-                                    <option value="" selected>selecione o modelo</option>
+                                <form action="{{ route('admin.cadastroTipo') }}" method="POST">
+                                @csrf
+                                <select name="modelo_id" id="">
+                                    <option value="0" selected>selecione o modelo</option>
                                     @foreach ($listaModelo as $modelo)
-                                        <option value="{{$modelo->id}}">{{$modelo->nome_modelo}}</option>
+                                        <option value="{{ $modelo->id }}">{{ $modelo->nome_modelo }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <form action="{{ route('admin.cadastroTipo') }}">
-                                    @csrf
                                     <input type="text" name="nome_tipo" id="" placeholder="ssd data m2">
                             </td>
-                            <td><button class="btn btn-success" type="submit">cadastrar</button></form></td>
+                            <td><button class="btn btn-success" type="submit">cadastrar</button></form>
+                            </td>
                         </tr>
+
                         <tr>
                             <td>Capacidade</td>
                             <td>
-                                <select name="nome" id="">
+                                <form action="{{route('admin.cadastroCapacidade')}}" method="POST">
+                                @csrf
+                                <select name="modelo_id" id="">
                                     <option value="0" selected>selecione o modelo</option>
                                     @foreach ($listaModelo as $modelo)
-                                        <option value="1">{{$modelo->nome_modelo}}</option>
+                                        <option value="{{$modelo->id}}">{{ $modelo->nome_modelo }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="nome" id="" placeholder="500gb">
+                                <input type="text" name="capacidade" id="" placeholder="500gb">
                             </td>
-                            <td><form action=""><button class="btn btn-success" type="submit">cadastrar</button></form></td>
+                            <td>
+                                <button class="btn btn-success" type="submit">cadastrar</button>
+                                </form>
+                            </td>
                         </tr>
+
                         <tr>
                             <td>Velocidade</td>
                             <td>
-                                <select name="nome" id="">
-                                    <option value="0" selected>selecione o tipo</option>
-                                    @foreach ($listaTipo as $tipo )
-                                        <option value="1">{{$tipo->nome_tipo}}</option>
+                                <form action="{{route('admin.cadastroVelocidade')}}" method="POST">
+                                @csrf
+                                <select name="modelo_id" id="">
+                                    <option value="0" selected>selecione o modelo</option>
+                                    @foreach ($listaModelo as $modelo)
+                                        <option value="{{$modelo->id}}">{{ $modelo->nome_modelo }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="nome" id="" placeholder="500mbs / 450mbs">
+                                <input type="text" name="leitura" id="" placeholder="550mbs"><br>
+                                <input type="text" name="escrita" id="" placeholder="450mbs">
                             </td>
-                            <td><form action=""><button class="btn btn-success" type="submit">cadastrar</button></form></td>
+                            <td>
+                                <button class="btn btn-success" type="submit">cadastrar</button>
+                                </form>
+                            </td>
                         </tr>
                         <tr>
                             <td>Aplicação</td>
                             <td>
-                                <select name="nome" id="">
-                                    <option value="0" selected>selecione o Tipo</option>
-                                    @foreach ($listaTipo as $tipo )
-                                        <option value="1">{{$tipo->nome_tipo}}</option>
+                                <form action="{{route('admin.cadastroAplicacao')}}" method="POST">
+                                @csrf
+                                <select name="modelo_id" id="">
+                                    <option value="0" selected>selecione o modelo</option>
+                                    @foreach ($listaModelo as $modelo)
+                                        <option value="{{$modelo->id}}">{{ $modelo->nome_modelo }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="nome" id="" placeholder="PC, notebook, console">
+                                <input type="text" name="nome_aplicacao" id="" placeholder="PC, notebook, console...">
                             </td>
-                            <td><form action=""><button class="btn btn-success" type="submit">cadastrar</button></form></td>
+                            <td>
+                                <button class="btn btn-success" type="submit">cadastrar</button>
+                                </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

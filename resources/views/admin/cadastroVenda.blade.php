@@ -21,7 +21,7 @@
                     <input type="date" name="data_venda" id=""><br />
 
                     <label for="">Valor</label>
-                    <input type="decimal" name="valor" id="" placeholder="R$ 99"><br>
+                    <input type="decimal" name="preco_venda" id="" placeholder="R$ 99"><br>
 
                     <label for="">N/S</label>
                     <input type="text" name="numero_serie" id="" placeholder="222555h4h55g6X"><br>

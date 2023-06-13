@@ -40,7 +40,12 @@ Route::prefix('/admin')->group(function(){
     Route::post('/cadastarVenda', [AdminController::class, 'storeVenda'])->name('admin.cadastroVenda');
 
     Route::get('/cadastroEspecificacoes', [AdminController::class, 'viewCadastroEspecificacoes'])->name('admin.cadastroEspecificacoes');
+    Route::post('/cadastroMarca', [AdminController::class, 'cadastroMarca'])->name('admin.cadastroMarca');
+    Route::post('/cadastroModelo', [AdminController::class, 'cadastroModelo'])->name('admin.cadastroModelo');
     Route::post('/cadastroTipo', [AdminController::class, 'cadastroTipo'])->name('admin.cadastroTipo');
+    Route::post('/cadastroCapacidade', [AdminController::class, 'cadastroCapacidade'])->name('admin.cadastroCapacidade');
+    Route::post('/cadastroVelocidade', [AdminController::class, 'cadastroVelocidade'])->name('admin.cadastroVelocidade');
+    Route::post('/cadastroAplicacao', [AdminController::class, 'cadastroAplicacao'])->name('admin.cadastroAplicacao');
 });
 
 

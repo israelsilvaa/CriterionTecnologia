@@ -16,6 +16,14 @@
                 <form action="{{route('admin.cadastroProduto')}}" method="post">
                     @csrf
 
+                    <label for="nome_marca">Nome do produto</label>
+                    <input type="text" name="nome_produto" id="" placeholder="SSD sata...">
+                    <br />
+                    
+                    <label for="">Número de série</label>
+                    <input type="text" name="numero_serie" id="" placeholder="NV3000x">
+                    <br />
+
                     <label for="nome_marca">Marca</label>
                     <select name="nome_marca" id="">
                         @foreach ($listaMarca as $marca)
@@ -31,7 +39,7 @@
                     </select><br />
 
                     <label for="">Capacidade</label>
-                    <select name="tamanho" id="">
+                    <select name="capacidade" id="">
                         @foreach ($listaCapacidades as $capacidade)
                         <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
                         @endforeach
@@ -60,13 +68,9 @@
                         @endforeach
                     </select><br />
 
-                    <label for="">Número de série</label>
-                    <input type="text" name="numero_serie" id="">
-                    <br />
-
                     <h6 class="text-center">Informações de importação</h6>
                     <label for="">Preço</label>
-                    <input type="decimal" name="preco_importacao" id="">
+                    <input type="decimal" name="preco_importacao" id="" placeholder="R$180.50">
                     <br />
 
                     <label for="">Data do pedido</label>
