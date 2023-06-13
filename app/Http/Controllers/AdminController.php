@@ -71,31 +71,31 @@ class AdminController extends Controller
     
     public function store(Request $request){
         $produto = new Produto();
+        
+        $produto = new Produto();
+        $produto->nome_produto = $request->nome_produto;
         $produto->numero_serie = $request->numero_serie;
+        $produto->marca_id = $request->nome_marca;
+        $produto->modelo_id = $request->nome_modelo;
+        $produto->tipo_id = $request->nome_tipo;
+        $produto->capacidade_id = $request->capacidade;
+        $produto->velocidade_id = $request->velocidade;
+        $produto->aplicacao_id = $request->nome_aplicacao;
         $produto->save();
         
         $id_produto = Produto::where('numero_serie', '=', $request->numero_serie)
         ->get()
         ->pluck('id')
         ->first();
+
         $importacao = new Importacao();
-        $importacao->produto_id = $id_produto;
+        $importacao->produto_id = $id_produto; 
         $importacao->preco_importacao = $request->preco_importacao;
         $importacao->data_pedido = $request->data_pedido;
         $importacao->data_chegada = $request->data_chegada;
         $importacao->save();
         
-        $produto_detalhe = new produto_detalhe();
-        $produto_detalhe->produto_id = $id_produto;
-        $produto_detalhe->marca_id = $request->nome_marca;
-        $produto_detalhe->modelo_id = $request->nome_modelo;
-        $produto_detalhe->tipo_id = $request->nome_tipo;
-        $produto_detalhe->capacidade_id = $request->tamanho;
-        $produto_detalhe->velocidade_id = $request->velocidade;
-        $produto_detalhe->aplicacao_id = $request->nome_aplicacao;
-        $produto_detalhe->save();
-        
-        return view('admin.cadastroVenda');
+        return redirect()->route('admin.cadastroProduto');
     }
     
     public function storeVenda(Request $request){
@@ -114,7 +114,7 @@ class AdminController extends Controller
         ->addMonth();
         
         $venda->data_garantia = $data_garantia;
-        $venda->preco_venda = $request->valor;
+        $venda->preco_venda = $request->preco_venda;
         $venda->observacao = $request->observacao;
         
         $venda->save();  
@@ -127,16 +127,55 @@ class AdminController extends Controller
         
         $listaMarca = Marca::all();
         $listaModelo = Modelo::all();
-        $listaTipo = Tipo::all();
         
-        return view('admin.cadastroEspecificacoes', ['listaMarca' => $listaMarca, 'listaModelo' => $listaModelo, 'listaTipo' => $listaTipo]);
+        return view('admin.cadastroEspecificacoes', ['listaMarca' => $listaMarca, 'listaModelo' => $listaModelo]);
     }
     
+    public function cadastroMarca(Request $request){
+        $marca = new Marca();
+        $marca->nome_marca = $request->nome_marca;
+        $marca->save();
+        return redirect()->route('admin.cadastroEspecificacoes');
+    }
+    public function cadastroModelo(Request $request){
+        $novoModelo = new Modelo();
+        $novoModelo->marca_id =$request->marca_id;
+        $novoModelo->nome_modelo =$request->nome_modelo;
+
+        $novoModelo->save();
+        return redirect()->route('admin.cadastroEspecificacoes');
+    }
     public function cadastroTipo(Request $request){
         $novoTipo = new Tipo();
-        dd($request);
-        $novoTipo->nome_tipo =$request->nome;
+        // dd($request);
+        $novoTipo->modelo_id =$request->modelo_id;
+        $novoTipo->nome_tipo =$request->nome_tipo;
         $novoTipo->save();
+        return redirect()->route('admin.cadastroEspecificacoes');
+    }
+    public function cadastroCapacidade(Request $request){
+        $capacidade = new Capacidade();
+        // dd($capacidade);
+        $capacidade->modelo_id = $request->modelo_id;
+        $capacidade->capacidade = $request->capacidade;
+        $capacidade->save();
+        return redirect()->route('admin.cadastroEspecificacoes');
+    }
+    public function cadastroVelocidade(Request $request){
+        $velocidade = new Velocidade();
+        // dd($request);
+        $velocidade->modelo_id = $request->modelo_id;
+        $velocidade->leitura = $request->leitura;
+        $velocidade->escrita = $request->escrita;
+        $velocidade->save();
+        return redirect()->route('admin.cadastroEspecificacoes');
+    }
+    public function cadastroAplicacao(Request $request){
+        $aplicacao = new Aplicacoes();
+        // dd($request);
+        $aplicacao->modelo_id =$request->modelo_id;
+        $aplicacao->nome_aplicacao =$request->nome_aplicacao;
+        $aplicacao->save();
         return redirect()->route('admin.cadastroEspecificacoes');
     }
 }
