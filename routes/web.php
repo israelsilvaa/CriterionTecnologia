@@ -38,6 +38,9 @@ Route::prefix('/admin')->group(function(){
     
     Route::get('/cadastarVenda', [AdminController::class, 'viewCadastroVenda'])->name('admin.cadastroVenda');
     Route::post('/cadastarVenda', [AdminController::class, 'storeVenda'])->name('admin.cadastroVenda');
+
+    Route::get('/cadastroEspecificacoes', [AdminController::class, 'viewCadastroEspecificacoes'])->name('admin.cadastroEspecificacoes');
+    Route::post('/cadastroTipo', [AdminController::class, 'cadastroTipo'])->name('admin.cadastroTipo');
 });
 
 

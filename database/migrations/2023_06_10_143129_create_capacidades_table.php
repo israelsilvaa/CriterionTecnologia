@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('capacidades', function (Blueprint $table) {
             $table->id();
-            $table->string('tamanho', 10);
+            $table->unsignedBigInteger('modelo_id');
+            $table->string('capacidade', 10);
             $table->timestamps();
+
+            //constraint
+            $table->foreign('modelo_id')->references('id')->on('modelos'); 
         });
     }
 

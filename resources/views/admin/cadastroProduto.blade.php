@@ -33,7 +33,7 @@
                     <label for="">Capacidade</label>
                     <select name="tamanho" id="">
                         @foreach ($listaCapacidades as $capacidade)
-                        <option value="{{ $capacidade->id }}">{{ $capacidade->tamanho }}</option>
+                        <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
                         @endforeach
                     </select><br />
                     

@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('produto_id');
-            $table->date('data_venda');
-            $table->date('data_garantia');
+            $table->string('cliente', 100);
+            $table->datetime('data_venda');
+            $table->datetime('data_garantia');
             $table->float('preco_venda', 8, 2);
+            $table->mediumText('observacao');
+            $table->timestamps();
 
             //constraint
             $table->foreign('produto_id')->references('id')->on('produtos');
