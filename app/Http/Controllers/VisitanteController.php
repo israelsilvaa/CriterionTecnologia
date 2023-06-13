@@ -31,24 +31,24 @@ class VisitanteController extends Controller
  
     public function show(Request $request){
         
-        $produto_id = Produto::where('numero_serie', '=', $request->numero_serie)->get()->pluck('id')->first();
+        $produto = Produto::where('numero_serie', '=', $request->numero_serie)->get()->first();
+        // dd($produto);
         $venda = null;
-        if ($produto_id){
+        
+        // if(isset($produto)){
+        // }
 
-            $venda = Venda::where('produto_id', '=', $produto_id)->get()->first();
-
-            $produto = produto_detalhe::where('produto_id', '=', $produto_id)->get()->first();
-            $marca = Marca::where('id', '=', $produto->marca_id)->get()->pluck('nome_marca')->first();
-            $produto->marca_id = $marca;
-            $modelo = Modelo::where('id', '=', $produto->modelo_id)->get()->pluck('nome_modelo')->first();
-            $produto->modelo_id = $modelo;
-            $capacidade = Capacidade::where('id', '=', $produto->capacidade_id)->get()->pluck('tamanho')->first();
-            $produto->capacidade_id = $capacidade;
-            $tipo = Tipo::where('id', '=', $produto->tipo_id)->get()->pluck('nome_tipo')->first();
-            $produto->tipo_id = $tipo;
-            $aplicacao = Aplicacoes::where('id', '=', $produto->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
-            $produto->aplicacao_id = $aplicacao;
-            $produto->numero_serie =Produto::where('numero_serie', '=', $request->numero_serie)->get()->pluck('numero_serie')->first();        
+        if($produto != Null){
+            $venda = Venda::where('produto_id', '=', $produto->id)->get()->first();
+            
+            $produto->marca_id = Marca::where('id', '=', $produto->marca_id)->get()->pluck('nome_marca')->first();
+            $produto->modelo_id = Modelo::where('id', '=', $produto->modelo_id)->get()->pluck('nome_modelo')->first();
+            $produto->capacidade_id = Capacidade::where('id', '=', $produto->capacidade_id)->get()->pluck('capacidade')->first();
+            $produto->tipo_id = Tipo::where('id', '=', $produto->tipo_id)->get()->pluck('nome_tipo')->first();
+            $produto->aplicacao_id = Aplicacoes::where('id', '=', $produto->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
+            $produto->leitura = Velocidade::where('id', '=', $produto->velocidade_id)->get()->pluck('leitura')->first();
+            $produto->escrita = Velocidade::where('id', '=', $produto->velocidade_id)->get()->pluck('escrita')->first();
+            
             return view('visitante.garantia',['produto'=>$produto, 'venda'=>$venda]);
         }else{
             return view('visitante.garantia');
