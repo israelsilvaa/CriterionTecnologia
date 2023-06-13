@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('produto_id');
             $table->string('cliente', 100);
-            $table->date('data_venda');
-            $table->date('data_garantia');
+            $table->datetime('data_venda');
+            $table->datetime('data_garantia');
             $table->float('preco_venda', 8, 2);
             $table->mediumText('observacao');
+            $table->timestamps();
 
             //constraint
             $table->foreign('produto_id')->references('id')->on('produtos');

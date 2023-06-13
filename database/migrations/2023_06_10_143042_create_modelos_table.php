@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('marca_id');
             $table->string('nome_modelo', 50);
+            $table->timestamps();
 
             //constraint
             $table->foreign('marca_id')->references('id')->on('marcas');

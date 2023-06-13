@@ -23,21 +23,21 @@ class AdminController extends Controller
         if ($listaProdutos){
             
             foreach ($listaProdutos as $produto){
-                $listaDetalhes = produto_detalhe::where('produto_id', '=', $produto->id)->get()->first();
                 
-                $marca = Marca::where('id', '=', $listaDetalhes->marca_id)->get()->pluck('nome_marca')->first();
+                $marca = Marca::where('id', '=', $produto->marca_id)->get()->pluck('nome_marca')->first();
                 $produto->marca_id = $marca;
                 
-                $modelo = Modelo::where('id', '=', $listaDetalhes->modelo_id)->get()->pluck('nome_modelo')->first();
+                $modelo = Modelo::where('id', '=', $produto->modelo_id)->get()->pluck('nome_modelo')->first();
                 $produto->modelo_id = $modelo;
                 
-                $capacidade = Capacidade::where('id', '=', $listaDetalhes->capacidade_id)->get()->pluck('tamanho')->first();
+                $capacidade = Capacidade::where('id', '=', $produto->capacidade_id)->get()->pluck('capacidade')->first();
                 $produto->capacidade_id = $capacidade;
+                // dd($produto);
                 
-                $tipo = Tipo::where('id', '=', $listaDetalhes->tipo_id)->get()->pluck('nome_tipo')->first();
+                $tipo = Tipo::where('id', '=', $produto->tipo_id)->get()->pluck('nome_tipo')->first();
                 $produto->tipo_id = $tipo;
                 
-                $aplicacao = Aplicacoes::where('id', '=', $listaDetalhes->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
+                $aplicacao = Aplicacoes::where('id', '=', $produto->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
                 $produto->aplicacao_id = $aplicacao;
             }
 
@@ -46,7 +46,7 @@ class AdminController extends Controller
                 $numero_serie = Produto::where('id', '=', $venda->produto_id)->get()->pluck('numero_serie')->first();
                 $venda->numero_serie = $numero_serie;
             }
-            return view('admin.painel',  ['listaProdutos' => $listaProdutos, 'listaDetalhes'=> $listaDetalhes, 'listaVendas'=> $listaVendas]);
+            return view('admin.painel',  ['listaProdutos' => $listaProdutos, 'listaVendas'=> $listaVendas]);
         }else{
             return view('admin.painel');
         }

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('aplicacoes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tipo_id');
+            $table->unsignedBigInteger('modelo_id');
             $table->string('nome_aplicacao', 50);
             $table->timestamps();
             
             //constraint
-            $table->foreign('tipo_id')->references('id')->on('tipos');
+            $table->foreign('modelo_id')->references('id')->on('modelos');
         });
     }
 

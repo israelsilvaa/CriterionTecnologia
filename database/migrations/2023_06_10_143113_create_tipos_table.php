@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
 
             //constraint
-            $table->foreign('modelo_id')->references('id')->on('marcas');
+            $table->foreign('modelo_id')->references('id')->on('modelos');
         });
     }
 
