@@ -120,7 +120,6 @@ class AdminController extends Controller
         $venda->save();  
         
         // Atualizar coluna "vendido" em produto(para "vendido")
-        // mudar nome da coluna.
 
         return view('admin.cadastroVenda');
     }
@@ -180,5 +179,11 @@ class AdminController extends Controller
         $aplicacao->nome_aplicacao =$request->nome_aplicacao;
         $aplicacao->save();
         return redirect()->route('admin.cadastroEspecificacoes');
+    }
+
+    public function selectMarca($marca_id){
+        $listaModelos = Modelo::all();
+   
+        return view('admin.cadastroProduto', ['listaModelos'=> $listaModelos]);
     }
 }
