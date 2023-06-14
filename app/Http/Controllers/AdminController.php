@@ -119,6 +119,9 @@ class AdminController extends Controller
         
         $venda->save();  
         
+        // Atualizar coluna "vendido" em produto(para "vendido")
+        // mudar nome da coluna.
+
         return view('admin.cadastroVenda');
     }
     
