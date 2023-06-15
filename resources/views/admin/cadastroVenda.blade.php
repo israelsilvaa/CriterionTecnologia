@@ -6,30 +6,48 @@
     <div class="container bg-secondary mt-5 rounded-5">
         <div class="row">
             <div class="col-6 offset-5">
-                <img src="/images/logo_1.png" width="190px" height="70px" alt="" />
+                <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
             </div>
         </div>
         <div class="row">
             <h1 class="text-center">Adicionar Venda</h1>
             <div class="col">
-                <form action="{{route('admin.cadastroVenda')}}" method="post">
+                <form action="{{ route('admin.cadastroVenda') }}" method="post">
                     @csrf
-                    <label for="">Cliente</label>
-                    <input type="text" name="cliente" id="" placeholder="joão da silva"><br>
 
-                    <label for="">Data da venda</label>
-                    <input type="date" name="data_venda" id=""><br />
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon1">Cliente</span>
+                        <input type="text" class="form-control" name="Cliente" placeholder="joão da silva"
+                            aria-label="cliente" aria-describedby="basic-addon1">
+                    </div>
 
-                    <label for="">Valor</label>
-                    <input type="decimal" name="preco_venda" id="" placeholder="R$ 99"><br>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon1">Data da venda</span>
+                        <input type="date" class="form-control" name="data_venda" aria-label="data_venda"
+                            aria-describedby="basic-addon1">
+                    </div>
 
-                    <label for="">N/S</label>
-                    <input type="text" name="numero_serie" id="" placeholder="222555h4h55g6X"><br>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon1">Valor</span>
+                        <input type="decimal" class="form-control" name="preco_venda" placeholder="R$ 99" aria-label="Valor"
+                            aria-describedby="basic-addon1">
+                    </div>
 
-                    <label for="">Observação</label><br>
-                    <textarea name="observacao" id="" cols="60" rows="3">Sem observações.</textarea><br>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon1">N/S</span>
+                        <input type="text" class="form-control" name="numero_serie" placeholder="222555h4h55g6X"
+                            aria-label="numero_serie" aria-describedby="basic-addon1">
+                    </div>
 
-                    <button type="submit" class="btn btn-success">cadastrar</button>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" name="observacao" cols="60" rows="3" id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Observação</label>
+                    </div>
+
+                    <div class=" text-center">
+                        <button type="submit" class="btn btn-success btn-block mt-3 ">cadastrar</button>
+                    </div>
+                    
                 </form>
             </div>
         </div>
