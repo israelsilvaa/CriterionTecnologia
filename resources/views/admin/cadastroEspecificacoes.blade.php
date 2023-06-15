@@ -6,7 +6,7 @@
     <div class="container bg-secondary mt-5 rounded-5">
         <div class="row">
             <div class="col-6 offset-5">
-                <img src="/images/logo_1.png" width="190px" height="70px" alt="" />
+                <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
             </div>
         </div>
         <div class="row">
@@ -30,6 +30,7 @@
                                 <form action="{{ route('admin.cadastroMarca') }}" method="POST">
                                     @csrf
                                 <input type="text" name="nome_marca" id="" placeholder="KingSpec-2">
+                                
                             </td>
                             <td>
                                 <button class="btn btn-success" type="submit">cadastrar</button>

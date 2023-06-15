@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Velocidade;
 use App\Models\Aplicacoes;
 use App\Models\Capacidade;
 use App\Models\Importacao;
-use App\Models\Marca;
-use App\Models\Modelo;
 use App\Models\Produto;
-use App\Models\produto_detalhe;
-use App\Models\Tipo;
-use App\Models\Velocidade;
+use App\Models\Modelo;
 use App\Models\Venda;
+use App\Models\Marca;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -62,7 +61,7 @@ class AdminController extends Controller
         $listaTipos = Tipo::all();
         $listaAplicacoes = Aplicacoes::all();
 
-        return view('admin.cadastroProduto', ['listaMarca' => $listaMarca, 'listaModelos'=> $listaModelos, 'listaCapacidades'=> $listaCapacidades, 'listaTipos'=> $listaTipos, 'listaAplicacoes'=> $listaAplicacoes, 'listaVelocidade'=>$listaVelocidade]);
+        return view('admin.cadastroProduto', ['listaMarca' => $listaMarca]);
     }
 
     public function viewCadastroVenda(){
@@ -119,6 +118,8 @@ class AdminController extends Controller
         
         $venda->save();  
         
+        // Atualizar coluna "vendido" em produto(para "vendido")
+
         return view('admin.cadastroVenda');
     }
     
@@ -177,5 +178,11 @@ class AdminController extends Controller
         $aplicacao->nome_aplicacao =$request->nome_aplicacao;
         $aplicacao->save();
         return redirect()->route('admin.cadastroEspecificacoes');
+    }
+
+    public function selectMarca($marca_id){
+        $listaModelos = Modelo::all();
+   
+        return view('admin.cadastroProduto', ['listaModelos'=> $listaModelos]);
     }
 }

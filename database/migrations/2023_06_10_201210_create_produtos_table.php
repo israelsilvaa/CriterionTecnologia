@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('capacidade_id');
             $table->unsignedBigInteger('velocidade_id');
             $table->unsignedBigInteger('aplicacao_id');
-            $table->string('vendido')->default('Em estoque');
+            $table->string('status')->default('Em estoque');
             $table->timestamps();
             
             //contraint
