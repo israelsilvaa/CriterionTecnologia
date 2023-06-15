@@ -62,7 +62,7 @@ class AdminController extends Controller
         $listaTipos = Tipo::all();
         $listaAplicacoes = Aplicacoes::all();
 
-        return view('admin.cadastroProduto', ['listaMarca' => $listaMarca, 'listaModelos'=> $listaModelos, 'listaCapacidades'=> $listaCapacidades, 'listaTipos'=> $listaTipos, 'listaAplicacoes'=> $listaAplicacoes, 'listaVelocidade'=>$listaVelocidade]);
+        return view('admin.cadastroProduto', ['listaMarca' => $listaMarca]);
     }
 
     public function viewCadastroVenda(){

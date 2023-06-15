@@ -26,7 +26,7 @@
 
                     <label for="nome_marca">Marca</label>
                     <select name="nome_marca" id="" onchange="selectMarca()">
-                        <option value="0" selected>selecione a marca</option>
+                        <option value="0" selected>Marca</option>
                         @if (isset($listaMarca))
                             @foreach ($listaMarca as $marca)
                                 <option value="{{ $marca->id }}">
@@ -42,7 +42,8 @@
 
                     <label for="nome_modelo">Modelo</label>
                     <select name="nome_modelo" id="">
-                        @if (isset($listaMarca))
+                        <option value="0" selected>Modelos</option>
+                        @if (isset($listaModelos))
                             @foreach ($listaModelos as $modelos)
                                 <option value="{{ $modelos->id }}">{{ $modelos->nome_modelo }}</option>
                             @endforeach
@@ -55,9 +56,11 @@
 
                     <label for="">Capacidade</label>
                     <select name="capacidade" id="">
-                        @foreach ($listaCapacidades as $capacidade)
-                            <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
-                        @endforeach
+                        <option value="0" selected>Capacidades</option>
+                        @if (isset($listaCapacidades))
+                            @foreach ($listaCapacidades as $capacidade)
+                                <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
+                            @endforeach
                         @else
                             <option value="">
                                 --
@@ -67,9 +70,11 @@
 
                     <label for="">tipo</label>
                     <select name="nome_tipo" id="">
-                        @foreach ($listaTipos as $tipo)
-                            <option value="{{ $tipo->id }}">{{ $tipo->nome_tipo }}</option>
-                        @endforeach
+                        <option value="0" selected>Tipos</option>
+                        @if (isset($listaTipos))
+                            @foreach ($listaTipos as $tipo)
+                                <option value="{{ $tipo->id }}">{{ $tipo->nome_tipo }}</option>
+                            @endforeach
                         @else
                             <option value="">
                                 --
@@ -79,19 +84,33 @@
 
                     <label for="">Velocidade</label>
                     <select name="velocidade" id="">
-                        @foreach ($listaVelocidade as $velocidade)
-                            <option value="{{ $velocidade->id }}">Leitura:{{ $velocidade->leitura }} -
-                                Escrita:{{ $velocidade->escrita }}</option>
-                        @endforeach
+                        <option value="0" selected>Velocidade de leitura/escrita</option>
+                        @if (isset($listaVelocidade))
+                            @foreach ($listaVelocidade as $velocidade)
+                                <option value="{{ $velocidade->id }}">Leitura:{{ $velocidade->leitura }} -
+                                    Escrita:{{ $velocidade->escrita }}</option>
+                            @endforeach
+                        @else
+                            <option value="">
+                                --
+                            </option>
+                        @endif
                     </select><br />
 
 
 
                     <label for="">Aplicação</label>
                     <select name="nome_aplicacao" id="">
-                        @foreach ($listaAplicacoes as $aplicacao)
-                            <option value="{{ $aplicacao->id }}">{{ $aplicacao->nome_aplicacao }}</option>
-                        @endforeach
+                        <option value="0" selected>Tipos de aplicação</option>
+                        @if (isset($listaAplicacoes))
+                            @foreach ($listaAplicacoes as $aplicacao)
+                                <option value="{{ $aplicacao->id }}">{{ $aplicacao->nome_aplicacao }}</option>
+                            @endforeach
+                        @else
+                            <option value="">
+                                --
+                            </option>
+                        @endif
                     </select><br />
 
                     <h6 class="text-center">Informações de importação</h6>
@@ -122,8 +141,11 @@
             var selectElement = document.querySelector('select');
             var selectedValue = selectElement.value;
             var selectedOptionText = selectElement.options[selectElement.selectedIndex].text;
-
-            view('admin.cadastroProduto')
+            @php
+            use \App\Model\Modelo;
+            $listaModelos = Modelo::all();
+            return redirect()->view('admin.cadastroProduto', ['listaModelos'=>$listaModelos])
+            @endphp
         }
     </script>
 
