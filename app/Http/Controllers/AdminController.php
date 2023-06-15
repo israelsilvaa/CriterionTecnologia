@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Velocidade;
 use App\Models\Aplicacoes;
 use App\Models\Capacidade;
 use App\Models\Importacao;
-use App\Models\Marca;
-use App\Models\Modelo;
 use App\Models\Produto;
-use App\Models\produto_detalhe;
-use App\Models\Tipo;
-use App\Models\Velocidade;
+use App\Models\Modelo;
 use App\Models\Venda;
+use App\Models\Marca;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
