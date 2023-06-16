@@ -4,9 +4,9 @@
 
 @section('conteudo')
     <div class="container bg-secondary mt-5 rounded-5">
-        <div class="row">
-            <div class="col-6 offset-5 mt-2">
-                <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="">
+        <div class="row justify-content-center">
+            <div class="col-auto ">
+                <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
             </div>
         </div>
         <div class="row">
@@ -26,85 +26,91 @@
                     </a>
                 </form>
                 <p class="text-white text-justify">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Modelo</th>
-                            <th scope="col">N/S</th>
-                            <th scope="col">Capacidade</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Leitu/Escri</th>
-                            <th scope="col">Aplicação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (isset($produto))
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
                             <tr>
-                                <td>{{ $produto->marca_id }}</td>
-                                <td>{{ $produto->modelo_id }}</td>
-                                <td>{{ $produto->numero_serie }}</td>
-                                <td>{{ $produto->capacidade_id }}</td>
-                                <td>{{ $produto->tipo_id }}</td>
-                                <td>{{ $produto->leitura }}-{{ $produto->escrita }}</td>
-                                <td>{{ $produto->aplicacao_id }}</td>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">N/S</th>
+                                <th scope="col">Capacidade</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Leitu/Escri</th>
+                                <th scope="col">Aplicação</th>
                             </tr>
-                        @else
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @if (isset($produto))
+                                <tr>
+                                    <td>{{ $produto->marca_id }}</td>
+                                    <td>{{ $produto->modelo_id }}</td>
+                                    <td>{{ $produto->numero_serie }}</td>
+                                    <td>{{ $produto->capacidade_id }}</td>
+                                    <td>{{ $produto->tipo_id }}</td>
+                                    <td>{{ $produto->leitura }}-{{ $produto->escrita }}</td>
+                                    <td>{{ $produto->aplicacao_id }}</td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
                             <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Compra</th>
+                                <th scope="col">Vencimento</th>
+                                <th scope="col">Observação</th>
                             </tr>
-                        @endif
-                    </tbody>
-                </table>
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Produto</th>
-                            <th scope="col">valor</th>
-                            <th scope="col">Data da compra</th>
-                            <th scope="col">Vencimento</th>
-                            <th scope="col">Observação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (isset($venda))
-                            @php
-                                $dataGarantia = \Carbon\Carbon::parse($venda->data_garantia);
-                                $dataAtual = \Carbon\Carbon::now();
-                            @endphp
-                            <tr>
-                                <td>{{ $venda->cliente }}</td>
-                                <td>{{ $produto->nome_produto }}</td>
-                                <td>{{ $venda->preco_venda }}</td>
-                                <td>{{ \Carbon\Carbon::parse($venda->data_venda)->format('d/m/Y') }}</td>
-                                @if ($dataGarantia->isBefore($dataAtual))
-                                    <td class="text-danger">
-                                        {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Fora da garantia</td>
-                                @else
-                                    <td class="text-success">
-                                        {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Está na garantia</td>
-                                @endif
-                                <td>{{ $venda->observacao }}</td>
-                            </tr>
-                        @else
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                            </tr>
-                        @endif
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @if (isset($venda))
+                                @php
+                                    $dataGarantia = \Carbon\Carbon::parse($venda->data_garantia);
+                                    $dataAtual = \Carbon\Carbon::now();
+                                @endphp
+                                <tr>
+                                    <td>{{ $venda->cliente }}</td>
+                                    <td>{{ $produto->nome_produto }}</td>
+                                    <td>{{ $venda->preco_venda }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($venda->data_venda)->format('d/m/Y') }}</td>
+                                    @if ($dataGarantia->isBefore($dataAtual))
+                                        <td class="text-danger">
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Fora da
+                                            garantia</td>
+                                    @else
+                                        <td class="text-success">
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Está na
+                                            garantia</td>
+                                    @endif
+                                    <td>{{ $venda->observacao }}</td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
                 </p>
 
                 <div class="row border border-dark">
