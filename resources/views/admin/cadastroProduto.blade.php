@@ -3,15 +3,15 @@
 @section('titulo', 'Cadastrar Produto')
 
 @section('conteudo')
-    <div class="container bg-secondary mt-5 rounded-5">
-        <div class="row">
-            <div class="col-6 offset-4">
+    <div class="container bg-secondary text-center  mt-5 rounded-5">
+        <div class="row justify-content-center">
+            <div class="col-auto ">
                 <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <h2 class="text-center">Novo produto</h2>
-            <div class="col-12">
+            <div class="col-md-8 ">
 
                 <h6 class="text-center">Informações do produto</h6>
                 <form action="{{ route('admin.cadastroProduto') }}" method="post">

@@ -4,21 +4,20 @@
 
 @section('conteudo')
     <div class="container bg-secondary mt-5 rounded-5">
-        <div class="row">
-            <div class="col-6 offset-5">
+        <div class="row justify-content-center">
+            <div class="col-auto ">
                 <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <h1 class="text-center">Adicionar Venda</h1>
-            <div class="col">
+            <div class="col-md-8">
                 <form action="{{ route('admin.cadastroVenda') }}" method="post">
                     @csrf
 
                     <div class="input-group mb-1">
                         <span class="input-group-text" id="basic-addon1">Cliente</span>
-                        <input type="text" class="form-control" name="Cliente" placeholder="joão da silva"
-                            aria-label="cliente" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="cliente" placeholder="joão da silva">
                     </div>
 
                     <div class="input-group mb-1">
