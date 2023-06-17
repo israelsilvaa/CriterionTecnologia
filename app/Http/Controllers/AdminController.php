@@ -109,17 +109,19 @@ class AdminController extends Controller
         $venda->cliente = $request->cliente;
         $venda->data_venda = $request->data_venda;
         
-        $data_garantia = now('America/Belem')->create($request->data_venda)
-        ->addMonth();
+        $data_garantia = now('America/Belem')
+                        ->create($request->data_venda)
+                        ->addMonth();
         
         $venda->data_garantia = $data_garantia;
         $venda->preco_venda = $request->preco_venda;
         $venda->observacao = $request->observacao;
-        
         $venda->save();  
-        
-        // Atualizar coluna "vendido" em produto(para "vendido")
 
+        $produto = Produto::find($id_produto);
+        $produto->status = "vendido";
+        $produto->save();
+        
         return view('admin.cadastroVenda');
     }
     

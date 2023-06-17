@@ -1,0 +1,9 @@
+login/coluna perfil
+coluna LOTE
+mostrar modelos, e disponibilidade(CATALOGO)
+coluna lucro(tabela de venda??)
+select dinamico com LIVEWIRE
+termos de garantia, coberta de garantia
+
+link em "desenvolvido por"
+deploy na hostinger??

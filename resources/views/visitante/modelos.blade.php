@@ -22,26 +22,16 @@
                                 <th scope="col">Leitura/escrita</th>
                                 <th scope="col">Aplicação</th>
                                 <th scope="col">A vista</th>
+                                <th scope="col">Disponibilidade</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <td>256gb</td>
-                                <td>550mb/450mb</td>
-                                <td>PC, Notebook, consoles</td>
-                                <td>R$ 130</td>
-                            </tr>
-                            <tr>
-                                <td>512gb</td>
-                                <td>550mb/450mb</td>
-                                <td>PC, Notebook, consoles</td>
-                                <td>R$ 200</td>
-                            </tr>
                             <tr>
                                 <td>1tb</td>
                                 <td>550mb/450mb</td>
                                 <td>PC, Notebook, consoles</td>
                                 <td>R$ 380</td>
+                                <td>em estoque</td>
                             </tr>
                         </tbody>
                     </table>
@@ -62,6 +52,7 @@
                                 <th scope="col">Aplicação</th>
                                 <th scope="col">geração</th>
                                 <th scope="col">a vista</th>
+                                <th scope="col">Disponibilidade</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -71,13 +62,7 @@
                                 <td>PC, Notebook</td>
                                 <td>3.0</td>
                                 <td>R$ 200</td>
-                            </tr>
-                            <tr>
-                                <td>1tb</td>
-                                <td>3200mb/2700mb</td>
-                                <td>PC, Notebook</td>
-                                <td>3.0</td>
-                                <td>R$ 400</td>
+                                <td>em estoque</td>
                             </tr>
                         </tbody>
                     </table>
@@ -97,23 +82,18 @@
                                 <th scope="col">Leitura/escrita</th>
                                 <th scope="col">Aplicação</th>
                                 <th scope="col">geração</th>
-                                <th scope="col">a vista</th>
+                                <th scope="col">R$</th>
+                                <th scope="col">Disponibilidade</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <td>500gb</td>
-                                <td>3000mb/2700mb</td>
-                                <td>PC, Notebook</td>
-                                <td>3.0</td>
-                                <td>R$ 230</td>
-                            </tr>
                             <tr>
                                 <td>1tb</td>
                                 <td>3000mb/2700mb</td>
                                 <td>PC, Notebook</td>
                                 <td>3.0</td>
                                 <td>R$ 460</td>
+                                <td>em estoque</td>
                             </tr>
                         </tbody>
                     </table>
