@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VisitanteController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,12 @@ Route::prefix('/admin')->group(function(){
     Route::post('/cadastroCapacidade', [AdminController::class, 'cadastroCapacidade'])->name('admin.cadastroCapacidade');
     Route::post('/cadastroVelocidade', [AdminController::class, 'cadastroVelocidade'])->name('admin.cadastroVelocidade');
     Route::post('/cadastroAplicacao', [AdminController::class, 'cadastroAplicacao'])->name('admin.cadastroAplicacao');
+    Route::post('/cadastroGeracao', [AdminController::class, 'cadastroGeracao'])->name('admin.cadastroGeracao');
+});
+
+
+Route::prefix('/cliente')->group(function(){
+    Route::get('/painel', [ClienteController::class, 'viewPainel'])->name('cliente.painel');
 });
 
 
