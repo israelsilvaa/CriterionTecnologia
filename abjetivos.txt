@@ -1,6 +1,6 @@
 1_select dinamico com LIVEWIRE
 2_termos de garantia, coberta de garantia
 3_ordenar modelos pelo status(disponivel/indisponivel)
-
+4_validações( fazer com forma isolada)
 
 FINAL _ deploy na hostinger??
