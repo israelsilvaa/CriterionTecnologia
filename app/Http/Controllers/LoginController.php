@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,17 +12,10 @@ class LoginController extends Controller
         return view('admin.login');
     }
     
-    public function logar(Request $request){
+    public function logar(LoginRequest $request){
         
-        $regras = [
-            'usuario' => 'email',
-            'senha' => 'required'
-        ];
-        $feedback = [
-            'usuario.email' => 'O usuário é obrigatório',
-            'senha.required' => 'O campo senha é obrigatório' 
-        ];
-        $request->validate($regras, $feedback);
+        
+        $request->validated();
 
         $usuario = $request->usuario;
         $senha = $request->senha;
@@ -42,7 +36,6 @@ class LoginController extends Controller
             return redirect()->route('cliente.painel');
         }else{
             return redirect()->route('login');
-
         }
     }
 }
