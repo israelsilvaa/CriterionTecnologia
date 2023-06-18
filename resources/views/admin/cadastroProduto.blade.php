@@ -18,12 +18,6 @@
                     @csrf
 
                     <div class="input-group mb-1">
-                        <span class="input-group-text" id="basic-addon1">Nome do produto</span>
-                        <input type="text" class="form-control" name="nome_produto" placeholder="SSD sata..."
-                            aria-label="nome_produto" aria-describedby="basic-addon1">
-                    </div>
-
-                    <div class="input-group mb-1">
                         <span class="input-group-text" id="basic-addon1">Número de série</span>
                         <input type="text" class="form-control" name="numero_serie" id=""
                             placeholder="11155577799 " aria-label="nome_produto" aria-describedby="basic-addon1">
@@ -66,71 +60,25 @@
                         </div>
                     </div>
 
-                    <label for="">Capacidade</label>
-                    <select class="form-select form-select-sm" name="capacidade" id="">
-                        <option value="0" selected>Capacidades</option>
-                        @if (isset($listaCapacidades))
-                            @foreach ($listaCapacidades as $capacidade)
-                                <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
-                            @endforeach
-                        @else
-                            <option value="">
-                                --
-                            </option>
-                        @endif
-                    </select><br />
-
-                    <label for="">tipo</label>
-                    <select class="form-select form-select-sm" name="nome_tipo" id="">
-                        <option value="0" selected>Tipos</option>
-                        @if (isset($listaTipos))
-                            @foreach ($listaTipos as $tipo)
-                                <option value="{{ $tipo->id }}">{{ $tipo->nome_tipo }}</option>
-                            @endforeach
-                        @else
-                            <option value="">
-                                --
-                            </option>
-                        @endif
-                    </select><br />
-
-                    <label for="">Velocidade</label>
-                    <select class="form-select form-select-sm" name="velocidade" id="">
-                        <option value="0" selected>Velocidade de leitura/escrita</option>
-                        @if (isset($listaVelocidade))
-                            @foreach ($listaVelocidade as $velocidade)
-                                <option value="{{ $velocidade->id }}">Leitura:{{ $velocidade->leitura }} -
-                                    Escrita:{{ $velocidade->escrita }}</option>
-                            @endforeach
-                        @else
-                            <option value="">
-                                --
-                            </option>
-                        @endif
-                    </select><br />
-
-
-
-                    <label for="">Aplicação</label>
-                    <select class="form-select form-select-sm" name="nome_aplicacao" id="">
-                        <option value="0" selected>Tipos de aplicação</option>
-                        @if (isset($listaAplicacoes))
-                            @foreach ($listaAplicacoes as $aplicacao)
-                                <option value="{{ $aplicacao->id }}">{{ $aplicacao->nome_aplicacao }}</option>
-                            @endforeach
-                        @else
-                            <option value="">
-                                --
-                            </option>
-                        @endif
-                    </select><br />
-
                     <h6 class="text-center">Informações de importação</h6>
-                    <div class="input-group mb-1">
-                        <span class="input-group-text" id="basic-addon1">Preço</span>
-                        <input type="decimal" class="form-control" name="preco_importacao" id=""
-                            placeholder="R$180.50 " aria-label="nome_produto" aria-describedby="basic-addon1">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="input-group mb-1">
+                                <span class="input-group-text" id="basic-addon1">Preço</span>
+                                <input type="decimal" class="form-control" name="preco_importacao" id=""
+                                    placeholder="R$180.50 " aria-label="nome_produto" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="input-group mb-1">
+                                <span class="input-group-text" id="basic-addon1">Número do Lote</span>
+                                <input type="text" class="form-control" name="numero_lote" id=""
+                                    placeholder="#55 " aria-label="numero_lote" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="input-group mb-1">
@@ -152,7 +100,7 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-success btn-block">cadastrar</button>
                     </div>
-                
+
                 </form>
             </div>
         </div>

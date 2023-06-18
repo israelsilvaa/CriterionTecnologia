@@ -18,6 +18,7 @@ return new class extends Migration
             $table->datetime('data_venda');
             $table->datetime('data_garantia');
             $table->float('preco_venda', 8, 2);
+            $table->float('lucro', 8, 2);
             $table->mediumText('observacao');
             $table->timestamps();
 

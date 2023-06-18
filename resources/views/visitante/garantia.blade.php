@@ -37,21 +37,24 @@
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Leitu/Escri</th>
                                 <th scope="col">Aplicação</th>
+                                <th scope="col">Geração</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
                             @if (isset($produto))
                                 <tr>
-                                    <td>{{ $produto->marca_id }}</td>
-                                    <td>{{ $produto->modelo_id }}</td>
+                                    <td>{{ $produto->marca }}</td>
+                                    <td>{{ $produto->modelo }}</td>
                                     <td>{{ $produto->numero_serie }}</td>
-                                    <td>{{ $produto->capacidade_id }}</td>
-                                    <td>{{ $produto->tipo_id }}</td>
+                                    <td>{{ $produto->capacidade }}</td>
+                                    <td>{{ $produto->tipo }}</td>
                                     <td>{{ $produto->leitura }}-{{ $produto->escrita }}</td>
-                                    <td>{{ $produto->aplicacao_id }}</td>
+                                    <td>{{ $produto->aplicacao }}</td>
+                                    <td>{{ $produto->geracao }}</td>
                                 </tr>
                             @else
                                 <tr>
+                                    <td>--</td>
                                     <td>--</td>
                                     <td>--</td>
                                     <td>--</td>
@@ -89,11 +92,11 @@
                                     <td>{{ \Carbon\Carbon::parse($venda->data_venda)->format('d/m/Y') }}</td>
                                     @if ($dataGarantia->isBefore($dataAtual))
                                         <td class="text-danger">
-                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Fora da
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}-Fora da
                                             garantia</td>
                                     @else
                                         <td class="text-success">
-                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Está na
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}-Está na
                                             garantia</td>
                                     @endif
                                     <td>{{ $venda->observacao }}</td>

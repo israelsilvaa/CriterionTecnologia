@@ -17,8 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('perfil_id');
             $table->rememberToken();
             $table->timestamps();
+        
+            //constraint
+            $table->foreign('perfil_id')->references('id')->on('perfis');
         });
     }
 

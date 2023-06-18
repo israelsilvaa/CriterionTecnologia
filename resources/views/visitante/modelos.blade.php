@@ -10,95 +10,42 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md mt-4">
-                <h1 class="text-center">Modelos e especificações </h1>
-                <h4>KingSpec - Sata III </h4>
-                <p class="text-white text-justify">
-                <div class="table-responsive">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Capacidade</th>
-                                <th scope="col">Leitura/escrita</th>
-                                <th scope="col">Aplicação</th>
-                                <th scope="col">A vista</th>
-                                <th scope="col">Disponibilidade</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>1tb</td>
-                                <td>550mb/450mb</td>
-                                <td>PC, Notebook, consoles</td>
-                                <td>R$ 380</td>
-                                <td>em estoque</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md mt-4">
-                <h4>KingSpec - NVME M.2 </h4>
-                <p class="text-white text-justify">
-                <div class="table-responsive">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Capacidade</th>
-                                <th scope="col">Leitura/escrita</th>
-                                <th scope="col">Aplicação</th>
-                                <th scope="col">geração</th>
-                                <th scope="col">a vista</th>
-                                <th scope="col">Disponibilidade</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>512gb</td>
-                                <td>3200mb/2700mb</td>
-                                <td>PC, Notebook</td>
-                                <td>3.0</td>
-                                <td>R$ 200</td>
-                                <td>em estoque</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md mt-4">
-                <h4>Netac - NVME M.2 </h4>
-                <p class="text-white text-justify">
-                <div class="table-responsive">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Capacidade</th>
-                                <th scope="col">Leitura/escrita</th>
-                                <th scope="col">Aplicação</th>
-                                <th scope="col">geração</th>
-                                <th scope="col">R$</th>
-                                <th scope="col">Disponibilidade</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>1tb</td>
-                                <td>3000mb/2700mb</td>
-                                <td>PC, Notebook</td>
-                                <td>3.0</td>
-                                <td>R$ 460</td>
-                                <td>em estoque</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                </p>
+            <h1 class="text-center">Modelos e especificações </h1>
+
+            <div class="col mt-4">
+                @isset($modelos)
+                    @foreach ($modelos as $ssd)
+                        <h4>{{$ssd->nome_produto}} </h4>
+                        <div class="table-responsive">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Modelo</th>
+                                        <th scope="col">Capacidade</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Leitura/escrita</th>
+                                        <th scope="col">Aplicação</th>
+                                        <th scope="col">Geração</th>
+                                        <th scope="col">Preço</th>
+                                        <th scope="col">Disponibilidade</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <tr>
+                                        <td>{{$ssd->nome_modelo}}</td>
+                                        <td>{{$ssd->capacidade}}</td>
+                                        <td>{{$ssd->tipo}}</td>
+                                        <td>{{$ssd->leitura}}-{{$ssd->escrita}}</td>
+                                        <td>{{$ssd->aplicacao}}</td>
+                                        <td>{{$ssd->geracao}}</td>
+                                        <td>R${{$ssd->preco}}</td>
+                                        <td>{{$ssd->disponibilidade}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    @endforeach
+                @endisset
             </div>
         </div>
 

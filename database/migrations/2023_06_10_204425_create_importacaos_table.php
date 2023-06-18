@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('importacoes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('produto_id');
+            $table->bigInteger('lote');
             $table->float('preco_importacao', 8, 2);
             $table->date('data_pedido');
             $table->date('data_chegada');

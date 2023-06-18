@@ -13,22 +13,14 @@ class AplicacaoSeeder extends Seeder
      */
     public function run(): void
     {
-        //NX series 1
+        //NVMe
         $aplicacao = new Aplicacoes();
-        $aplicacao->modelo_id = 1;
         $aplicacao->nome_aplicacao = 'PC, Notebook';
         $aplicacao->save();
         
-        //Sata 2.5pl 2
+        //Sata 3
         $aplicacao = new Aplicacoes();
-        $aplicacao->modelo_id = 2;
-        $aplicacao->nome_aplicacao = 'PC, Notebook, consoles';
-        $aplicacao->save();
-        
-        //nv3000 3
-        $aplicacao = new Aplicacoes();
-        $aplicacao->modelo_id = 3;
-        $aplicacao->nome_aplicacao = 'PC, Notebook';
+        $aplicacao->nome_aplicacao = 'PC, Notebook, consoles, cases 2.5"';
         $aplicacao->save();
     }
 }
