@@ -17,10 +17,8 @@ class CadastroProduto extends Component
     }
 
     public function filtroModeloPorMarcaId(){
-        $this->modelos = $this->marca
-                              ->find($this->marca_id)
-                              ->modelo_id;
-                               dd($this->modelos);
+        $this->modelos = $this->marca->find($this->marca_id)->Modelo;
+        // dd($this->modelos->count());
     }
 
     public function render()

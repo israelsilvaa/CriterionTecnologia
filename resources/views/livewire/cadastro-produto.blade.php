@@ -22,7 +22,7 @@
                         wire:model="marca_id" 
                         wire:change="filtroModeloPorMarcaId" 
                         >
-                            <option value="0" selected>Marca</option>
+                            <option value="0" class="text-danger" selected>Marca</option>
                             @foreach ($marca->all(['id', 'nome_marca']) as $marca)
                                 <option value="{{ $marca->id }}">
                                     {{ $marca->nome_marca }}
@@ -33,10 +33,10 @@
                     <div class="col-md-6 col-sm-12">
                         <label for="nome_modelo">Modelo</label>
                         <select class="form-select form-select-sm" name="nome_modelo" id="">
-                            <option value="0" selected>Modelos</option>
-                            @if (isset($listaModelos))
-                                @foreach ($listaModelos as $modelos)
-                                    <option value="{{ $modelos->id }}">{{ $modelos->nome_modelo }}</option>
+                            <option value="0" selected><span class="text-danger">Modelos</span></option>
+                            @if (isset($modelos))
+                                @foreach ($modelos as $modelo)
+                                    <option value="{{ $modelo->id }}">{{ $modelo->nome_modelo }}</option>
                                 @endforeach
                             @else
                                 <option value="">
@@ -60,7 +60,7 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">Número do Lote</span>
-                            <input type="text" class="form-control" name="numero_lote" id=""
+                            <input type="text" class="form-control" name="lote" id=""
                                 placeholder="#55 " aria-label="numero_lote" aria-describedby="basic-addon1">
                         </div>
                     </div>
