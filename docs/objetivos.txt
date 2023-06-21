@@ -1,0 +1,5 @@
+1_select dinamico com LIVEWIRE
+3_ordenar modelos pelo status(disponivel/indisponivel)
+4_validações para todas as telas( fazer com forma isolada)
+
+FINAL _ deploy na hostinger??

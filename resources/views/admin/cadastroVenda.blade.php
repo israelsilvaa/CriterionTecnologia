@@ -28,18 +28,18 @@
 
                     <div class="input-group mb-1">
                         <span class="input-group-text" id="basic-addon1">Valor</span>
-                        <input type="decimal" class="form-control" name="preco_venda" placeholder="R$ 99" aria-label="Valor"
+                        <input type="decimal" class="form-control" name="preco_venda" placeholder="R$ 500" aria-label="Valor"
                             aria-describedby="basic-addon1">
                     </div>
 
                     <div class="input-group mb-1">
-                        <span class="input-group-text" id="basic-addon1">N/S</span>
+                        <span class="input-group-text" id="basic-addon1">Nº/S</span>
                         <input type="text" class="form-control" name="numero_serie" placeholder="222555h4h55g6X"
                             aria-label="numero_serie" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" name="observacao" cols="60" rows="3" id="floatingTextarea"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" name="observacao" cols="60" rows="3" id="floatingTextarea">N/A</textarea>
                         <label for="floatingTextarea">Observação</label>
                     </div>
 

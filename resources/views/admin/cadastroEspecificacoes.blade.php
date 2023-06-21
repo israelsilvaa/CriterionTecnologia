@@ -43,7 +43,56 @@
                                             <option value="{{ $marca->id }}">{{ $marca->nome_marca }}</option>
                                         @endforeach
                                     </select><br />
-                                    <input type="text" name="nome_modelo" id="" placeholder="Novo modelo 2023">
+                                </div>
+                                <div class="row  input-group mb-1">
+                                    <div class="col-6 ">
+                                        <label for="">nome do modelo</label>
+                                        <input type="text" name="nome_modelo" id="" placeholder="P3-512">
+                                        
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="">nome do produto</label>
+                                        <input type="text" name="nome_produto" id="" placeholder="SSD Sata 2.5">
+                                    </div>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <select class="form-select form-select-sm" name="tipo_id" id="">
+                                        <option value="0" selected>Tipo</option>
+                                        @foreach ($listaTipo as $tipo)
+                                        <option value="{{ $tipo->id }}">{{ $tipo->nome_tipo }}</option>
+                                        @endforeach
+                                    </select><br />
+                               
+                                    <select class="form-select form-select-sm" name="capacidade_id" id="">
+                                        <option value="0" selected>Capacidade</option>
+                                        @foreach ($listaCapacidade as $capacidade)
+                                        <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
+                                        @endforeach
+                                    </select><br />
+                                </div>
+                                <div class="input-group mb-1">
+                                    <select class="form-select form-select-sm" name="velocidade_id" id="">
+                                        <option value="0" selected>Velocidade</option>
+                                        @foreach ($listaVelocidade as $velocidade)
+                                            <option value="{{ $velocidade->id }}">{{ $velocidade->leitura}}-{{ $velocidade->escrita}}</option>
+                                        @endforeach
+                                    </select><br />
+                                    
+                                    <select class="form-select form-select-sm" name="aplicacao_id" id="">
+                                        <option value="0" selected>Aplicação</option>
+                                        @foreach ($listaAplicacao as $aplicacao)
+                                            <option value="{{ $aplicacao->id }}">{{ $aplicacao->nome_aplicacao }}</option>
+                                        @endforeach
+                                    </select><br />
+                                </div>
+                                <div class="input-group mb-1">
+                                    <select class="form-select form-select-sm" name="geracao_id" id="">
+                                        <option value="0" selected>Geração</option>
+                                        @foreach ($listaGeracao as $geracao)
+                                            <option value="{{ $geracao->id }}">{{ $geracao->geracao }}</option>
+                                        @endforeach
+                                    </select><br />
+                                    <input type="text" name="preco" id="" placeholder="Preço R$400">
                                     <button class="btn btn-success" type="submit">cadastrar</button>
                                 </div>
                             </fieldset>
@@ -58,12 +107,6 @@
                             <fieldset>
                                 <legend>Tipo</legend>
                                 <div class="input-group mb-1">
-                                    <select class="form-select form-select-sm" name="modelo_id" id="">
-                                        <option value="0" selected>Modelos</option>
-                                        @foreach ($listaModelo as $modelos)
-                                            <option value="{{ $modelos->id }}">{{ $modelos->nome_modelo }}</option>
-                                        @endforeach
-                                    </select><br />
                                     <input type="text" name="nome_tipo" id="" placeholder="Novo Tipo 2023">
                                     <button class="btn btn-success" type="submit">cadastrar</button>
                                 </div>
@@ -71,6 +114,7 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="row  justify-content-center">
                     <div class="col-md-8">
                         <form action="{{ route('admin.cadastroCapacidade') }}" method="post">
@@ -78,12 +122,6 @@
                             <fieldset>
                                 <legend>Capacidade</legend>
                                 <div class="input-group mb-1">
-                                    <select class="form-select form-select-sm" name="modelo_id" id="">
-                                        <option value="0" selected>Modelos</option>
-                                        @foreach ($listaModelo as $modelos)
-                                            <option value="{{ $modelos->id }}">{{ $modelos->nome_modelo }}</option>
-                                        @endforeach
-                                    </select><br />
                                     <input type="text" name="capacidade" id="" placeholder="512GB">
                                     <button class="btn btn-success" type="submit">cadastrar</button>
                                 </div>
@@ -91,6 +129,7 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="row  justify-content-center">
                     <div class="col-8">
                         <form action="{{ route('admin.cadastroVelocidade') }}" method="post">
@@ -98,12 +137,6 @@
                                 <legend>Velocidade</legend>
                                 @csrf
                                 <div class="input-group mb-1">
-                                    <select class="form-select form-select-sm " name="modelo_id" id="">
-                                        <option value="0" selected>Modelos</option>
-                                        @foreach ($listaModelo as $modelos)
-                                            <option value="{{ $modelos->id }}">{{ $modelos->nome_modelo }}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
                                 <input type="text" name="leitura" id="" placeholder="550mb/s">
                                 <input type="text" name="escrita" id="" placeholder="450mb/s">
@@ -120,13 +153,24 @@
                             <fieldset>
                                 <legend>Aplicação</legend>
                                 <div class="input-group mb-1">
-                                    <select class="form-select form-select-sm" name="modelo_id" id="">
-                                        <option value="0" selected>Modelos</option>
-                                        @foreach ($listaModelo as $modelos)
-                                            <option value="{{ $modelos->id }}">{{ $modelos->nome_modelo }}</option>
-                                        @endforeach
-                                    </select><br />
-                                    <input type="text" name="nome_aplicacao" id="" placeholder="PC, notebook, console">
+                                    <input type="text" name="nome_aplicacao" id=""
+                                        placeholder="PC, notebook, console">
+                                    <button class="btn btn-success" type="submit">cadastrar</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row  justify-content-center">
+                    <div class="col-md-8">
+                        <form action="{{ route('admin.cadastroGeracao') }}" method="post">
+                            @csrf
+                            <fieldset>
+                                <legend>Geração</legend>
+                                <div class="input-group mb-1">
+                                    <input type="text" name="geracao" id=""
+                                        placeholder="Gen5.0x4">
                                     <button class="btn btn-success" type="submit">cadastrar</button>
                                 </div>
                             </fieldset>

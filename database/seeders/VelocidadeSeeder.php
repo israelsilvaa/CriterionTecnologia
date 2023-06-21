@@ -13,25 +13,34 @@ class VelocidadeSeeder extends Seeder
      */
     public function run(): void
     {
-        //NX series 1
+        //sata 3 256
         $velovidade = new Velocidade();
-        $velovidade->modelo_id = 1;
-        $velovidade->leitura = '3200mb/s';
-        $velovidade->escrita = '2800mb/s';
+        $velovidade->leitura = '564mb/s';
+        $velovidade->escrita = '483mb/s';
+        $velovidade->save();
+        
+        //sata 3 512 
+        $velovidade = new Velocidade();
+        $velovidade->leitura = '563mb/s';
+        $velovidade->escrita = '509mb/s';
+        $velovidade->save();
+        
+        //sata 3 1tb
+        $velovidade = new Velocidade();
+        $velovidade->leitura = '561mb/s';
+        $velovidade->escrita = '510mb/s';
         $velovidade->save();
 
-        //sata 2.5pl
+        //NX series gen3x4
         $velovidade = new Velocidade();
-        $velovidade->modelo_id = 2;
-        $velovidade->leitura = '550mb/s';
-        $velovidade->escrita = '450mb/s';
+        $velovidade->leitura = '3400mb/s';
+        $velovidade->escrita = '3100mb/s';
         $velovidade->save();
 
-        //nv3000
+        //nv3000 500 gen3x4
         $velovidade = new Velocidade();
-        $velovidade->modelo_id = 3;
         $velovidade->leitura = '3100mb/s';
-        $velovidade->escrita = '3000mb/s';
+        $velovidade->escrita = '2100mb/s';
         $velovidade->save();
     }
 }

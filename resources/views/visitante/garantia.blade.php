@@ -15,55 +15,20 @@
                 <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center">
                     @csrf
                     <label for="">Número de série:</label>
-                    <input type="text" name="numero_serie" id="" placeholder="">
+                    <input type="text" name="numero_serie" value="{{ old('numero_serie') }}" id=""
+                        placeholder="">
 
-                    <a href="index.html" class="btn btn-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                        </svg>
-                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button><br>
+                    @if ($errors->all())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger" role="alert">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
                 </form>
-                <p class="text-white text-justify">
-                <div class="table-responsive">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Modelo</th>
-                                <th scope="col">N/S</th>
-                                <th scope="col">Capacidade</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Leitu/Escri</th>
-                                <th scope="col">Aplicação</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            @if (isset($produto))
-                                <tr>
-                                    <td>{{ $produto->marca_id }}</td>
-                                    <td>{{ $produto->modelo_id }}</td>
-                                    <td>{{ $produto->numero_serie }}</td>
-                                    <td>{{ $produto->capacidade_id }}</td>
-                                    <td>{{ $produto->tipo_id }}</td>
-                                    <td>{{ $produto->leitura }}-{{ $produto->escrita }}</td>
-                                    <td>{{ $produto->aplicacao_id }}</td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
                 <div class="table-responsive">
                     <table class="table table-dark">
                         <thead>
@@ -89,11 +54,11 @@
                                     <td>{{ \Carbon\Carbon::parse($venda->data_venda)->format('d/m/Y') }}</td>
                                     @if ($dataGarantia->isBefore($dataAtual))
                                         <td class="text-danger">
-                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Fora da
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}-Fora da
                                             garantia</td>
                                     @else
                                         <td class="text-success">
-                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }} - Está na
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}-Está na
                                             garantia</td>
                                     @endif
                                     <td>{{ $venda->observacao }}</td>
@@ -111,16 +76,57 @@
                         </tbody>
                     </table>
                 </div>
-                </p>
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">N/S</th>
+                                <th scope="col">Capacidade</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Leitu/Escri</th>
+                                <th scope="col">Aplicação</th>
+                                <th scope="col">Geração</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @if (isset($produto))
+                                <tr>
+                                    <td>{{ $produto->marca }}</td>
+                                    <td>{{ $produto->modelo }}</td>
+                                    <td>{{ $produto->numero_serie }}</td>
+                                    <td>{{ $produto->capacidade }}</td>
+                                    <td>{{ $produto->tipo }}</td>
+                                    <td>{{ $produto->leitura }}-{{ $produto->escrita }}</td>
+                                    <td>{{ $produto->aplicacao }}</td>
+                                    <td>{{ $produto->geracao }}</td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="row border border-dark">
                     <div class="col-md-6">
                         <p>
                             O que a garantia da loja cobre? <br>
                         <ol>
-                            <li>SSD lento</li>
-                            <li>SSD formato RAW</li>
-                            <li>...</li>
+                            <li>SSD MUITO lento, incompatível com as velocidades referência.</li>
+                            <li>SSD em formato RAW.</li>
+                            <li>só liga o led, mas não inicia.</li>
+                            <li>Não gostei da cor</li>
                         </ol>
                         </p>
                     </div>
@@ -129,9 +135,9 @@
                         <p>
                             O que NÃO cobre? <br>
                         <ol>
-                            <li>incompativel com a maquina</li>
-                            <li>Quero uma capacidade maior</li>
-                            <li>...</li>
+                            <li>máquina não suporta entrada do SSD (m.2, Sata).</li>
+                            <li>me arrependi da compra.</li>
+                            <li>quero um tamanho maior. </li>
                         </ol>
                         </p>
                     </div>
