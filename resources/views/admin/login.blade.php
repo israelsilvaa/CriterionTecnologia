@@ -14,7 +14,7 @@
                 <input type="email" value="{{ old('usuario') }}" name="usuario" class="form-control" id="floatingInput"
                     placeholder="name@example.com">
                 @if ($errors->has('usuario'))
-                    <span class="text-danger"> {{ $errors->first('usuario') }}</span>
+                    <span class="errors text-danger"> {{ $errors->first('usuario') }}</span>
                 @endif
                 <label for="floatingInput">Usuário</label>
             </div>
@@ -24,7 +24,7 @@
                 <label for="floatingPassword">Senha</label>
             </div>
             @if ($errors->has('senha'))
-                <span class="text-danger"> {{ $errors->first('senha') }}</span>
+                <span class="errors text-danger"> {{ $errors->first('senha') }}</span>
             @endif
 
 

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('modelos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('marca_id')->constrained()->cascadeOnDelete();
+
             $table->string('nome_modelo', 20);
             $table->string('nome_produto', 100);
             
-            $table->unsignedBigInteger('marca_id');
             $table->unsignedBigInteger('tipo_id');
             $table->unsignedBigInteger('capacidade_id');
             $table->unsignedBigInteger('velocidade_id');
@@ -26,7 +27,6 @@ return new class extends Migration
             $table->timestamps();
             
             //contraint
-            $table->foreign('marca_id')->references('id')->on('marcas');
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->foreign('capacidade_id')->references('id')->on('capacidades');
             $table->foreign('velocidade_id')->references('id')->on('velocidades');

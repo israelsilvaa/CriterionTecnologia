@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GarantiaRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\VendaRequest;
 use Illuminate\Http\Request;
 use App\Models\Aplicacoes;
 use App\Models\Capacidade;
@@ -23,17 +26,14 @@ class VisitanteController extends Controller
         return view('visitante.garantia');
     }
  
-    public function show(Request $request){
+    public function show( GarantiaRequest $request){
         
+        $request->validated();
         $produto = Produto::where('numero_serie', '=', $request->numero_serie)->get()->first();
         
-        if ($produto != null){
-            $venda = Venda::where('produto_id', $produto->id)->count();
-        }else{
-            $venda = 0; 
-        }
-        
-        if($produto != Null and $venda != 0){
+        $venda = Venda::where('produto_id', $produto->id)->get()->first();
+        if ($venda != null){
+    
             $venda = Venda::where('produto_id', '=', $produto->id)->get()->first();
             $modelo = Modelo::where('id', '=', $produto->modelo_id)->get()->first();
             
@@ -47,11 +47,12 @@ class VisitanteController extends Controller
             $produto->escrita = Velocidade::where('id', '=', $modelo->velocidade_id)->get()->pluck('escrita')->first();
             $produto->geracao = Geracao::where('id', '=', $modelo->geracao_id)->get()->pluck('geracao')->first();
             $produto->numero_serie = $produto->numero_serie;
-                
+            
             return view('visitante.garantia',['produto'=>$produto, 'venda'=>$venda]);
         }else{
-            return view('visitante.garantia');
+            return redirect()->route('visitante.garantia')->withInput()->withErrors("Sem registro de venda para esse produto");
         }
+        
     }
     
     public function modelos(){
