@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CapacidadeSeeder::class);
         $this->call(VelocidadeSeeder::class);
         $this->call(AplicacaoSeeder::class);
+        $this->call(dimensoesSeeder::class);
         $this->call(ModeloSeeder::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Velocidade;
 use App\Models\Aplicacoes;
 use App\Models\Capacidade;
+use App\Models\Dimensoes;
 use App\Models\Geracao;
 use App\Models\Importacao;
 use App\Models\Produto;
@@ -136,6 +137,7 @@ class AdminController extends Controller
         $listaVelocidade = Velocidade::all();
         $listaAplicacao = Aplicacoes::all();
         $listaGeracao = Geracao::all();
+        $listaDimensoes = Dimensoes::all();
         
         return view('admin.cadastroEspecificacoes', ['listaMarca' => $listaMarca,
             'listaModelo' => $listaModelo,
@@ -143,6 +145,7 @@ class AdminController extends Controller
             'listaCapacidade' => $listaCapacidade,
             'listaVelocidade' => $listaVelocidade,
             'listaAplicacao' => $listaAplicacao,
+            'listaDimensoes' => $listaDimensoes,
             'listaGeracao' => $listaGeracao]);
     }
     
@@ -163,7 +166,10 @@ class AdminController extends Controller
         $novoModelo->aplicacao_id =$request->aplicacao_id;
         $novoModelo->geracao_id =$request->geracao_id;
         $novoModelo->preco = $request->preco;
+        $novoModelo->dimensoes_id =$request->dimensoes_id;
 
+        $novoModelo->imagem_card = $request->imagem_card->store('modelos');
+        
         $novoModelo->save();
         return redirect()->route('admin.cadastroEspecificacoes');
     }
@@ -199,10 +205,9 @@ class AdminController extends Controller
         $geracao->save();
         return redirect()->route('admin.cadastroEspecificacoes');
     }
-
-    public function selectMarca($marca_id){
-        $listaModelos = Modelo::all();
-   
-        return view('admin.cadastroProduto', ['listaModelos'=> $listaModelos]);
+    public function cadastroDimensoes(Request $request){
+        $dimensoes = $request->all();
+        $dimensoes = Dimensoes::create($dimensoes);
+        return redirect()->route('admin.cadastroEspecificacoes');
     }
 }

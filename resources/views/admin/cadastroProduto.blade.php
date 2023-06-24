@@ -10,7 +10,6 @@
             </div>
         </div>
         
-
         <div>
             @livewire('cadastro-produto')
         </div>

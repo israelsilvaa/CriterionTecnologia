@@ -1,157 +1,237 @@
-@extends('visitante.layout.basico')
+@extends('layout.basico')
 
 @section('titulo', 'Garantia')
 
 @section('conteudo')
-    <div class="container bg-secondary mt-5 rounded-5">
-        <div class="row justify-content-center">
-            <div class="col-auto ">
-                <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md mt-2">
+
+    <main class="flex-fill">
+        <div class="container">
+            <div class="row g-3 text-white">
                 <h1 class="text-center">Garantia</h1>
-                <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center">
+                <hr class="text-white">
+                <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center ">
                     @csrf
                     <label for="">Número de série:</label>
                     <input type="text" name="numero_serie" value="{{ old('numero_serie') }}" id=""
-                        placeholder="">
+                        placeholder="NV3000500GB">
 
                     <button type="submit" class="btn btn-success">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button><br>
                     @if ($errors->all())
-                    @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger" role="alert">
-                            {{ $error }}
-                        </div>
-                    @endforeach
-                @endif
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif
                 </form>
-                <div class="table-responsive">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Cliente</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Compra</th>
-                                <th scope="col">Vencimento</th>
-                                <th scope="col">Observação</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            @if (isset($venda))
-                                @php
-                                    $dataGarantia = \Carbon\Carbon::parse($venda->data_garantia);
-                                    $dataAtual = \Carbon\Carbon::now();
-                                @endphp
-                                <tr>
-                                    <td>{{ $venda->cliente }}</td>
-                                    <td>{{ $produto->nome_produto }}</td>
-                                    <td>{{ $venda->preco_venda }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($venda->data_venda)->format('d/m/Y') }}</td>
-                                    @if ($dataGarantia->isBefore($dataAtual))
-                                        <td class="text-danger">
-                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}-Fora da
-                                            garantia</td>
-                                    @else
-                                        <td class="text-success">
-                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}-Está na
-                                            garantia</td>
-                                    @endif
-                                    <td>{{ $venda->observacao }}</td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Modelo</th>
-                                <th scope="col">N/S</th>
-                                <th scope="col">Capacidade</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Leitu/Escri</th>
-                                <th scope="col">Aplicação</th>
-                                <th scope="col">Geração</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            @if (isset($produto))
-                                <tr>
-                                    <td>{{ $produto->marca }}</td>
-                                    <td>{{ $produto->modelo }}</td>
-                                    <td>{{ $produto->numero_serie }}</td>
-                                    <td>{{ $produto->capacidade }}</td>
-                                    <td>{{ $produto->tipo }}</td>
-                                    <td>{{ $produto->leitura }}-{{ $produto->escrita }}</td>
-                                    <td>{{ $produto->aplicacao }}</td>
-                                    <td>{{ $produto->geracao }}</td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="row border border-dark">
-                    <div class="col-md-6">
-                        <p>
-                            O que a garantia da loja cobre? <br>
-                        <ol>
-                            <li>SSD MUITO lento, incompatível com as velocidades referência.</li>
-                            <li>SSD em formato RAW.</li>
-                            <li>só liga o led, mas não inicia.</li>
-                            <li>Não gostei da cor</li>
-                        </ol>
-                        </p>
-                    </div>
-
-                    <div class="col-md-6">
-                        <p>
-                            O que NÃO cobre? <br>
-                        <ol>
-                            <li>máquina não suporta entrada do SSD (m.2, Sata).</li>
-                            <li>me arrependi da compra.</li>
-                            <li>quero um tamanho maior. </li>
-                        </ol>
-                        </p>
-                    </div>
-                </div>
-
             </div>
         </div>
+        <div class="container">
+            <div class="row">
 
+                <div class="col-sm-12 col-md-4 mt-4">
+                    @if (isset($venda))
+                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail" id="imgProduto">
+                    @else
+                        <img src="{{ url("storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png") }}" class="img-thumbnail" id="imgProduto">
+                    @endif
+                    <br class="clearfix">
+                    {{-- <div class="row my-3 gx-2">
+                        <div class="col">
+                            <img src="{{ asset('/images/01.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                        </div>
+                        <div class="col">
+                            <img src="{{ asset('/images/02.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                        </div>
+                        <div class="col">
+                            <img src="{{ asset('/images/03.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                        </div>
+                        <div class="col">
+                            <img src="{{ asset('/images/01.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                        </div>
+                    </div> --}}
+                </div>
 
-        <div class="row col-6 offset-3 mt-4 ">
-            <footer class="text-danger text-center">
-                <a href="/" class="link link-info text-dark"> Voltar</a>
-            </footer>
+                <div class="col-sm-12 col-md-4 text-white mt-4">
+                    <h1>Detalhes do produto</h1>
+                    @if (isset($venda))
+                        <div class="row">
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Marca: {{ $produto->marca }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>modelo: {{ $produto->modelo }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>N/S: {{ $produto->numero_serie }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                {{-- <small>Tipo: SATA Rev. 3.0 (6Gb/s) Compatível com SATA Rev. 2.0 (3Gb/s)</small> --}}
+                                <small>Tipo: {{ $produto->tipo }} </small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Capacidade: {{ $produto->capacidade }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Performance de referência: até {{ $produto->leitura }} para leitura e
+                                    {{ $produto->escrita }} para gravação</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Geração: {{ $produto->geracao }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Aplicação: {{ $produto->aplicacao }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>dimensões: 100,0 mm x 69,9 mm x 7,0 mm</small>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row">
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Marca: -</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>modelo: -</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Tipo: -</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Capacidade: -</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Performance de referência: -</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Geração:-</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Aplicação:-</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>dimensões:-</small>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-sm-12 col-md-4 text-white mt-4">
+                    <h1>Detalhes da venda</h1>
+                    @if (isset($venda))
+                        @php
+                            $dataGarantia = \Carbon\Carbon::parse($venda->data_garantia);
+                            $dataAtual = \Carbon\Carbon::now();
+                        @endphp
+                        <div class="row">
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Cliente: {{ $venda->cliente }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>N/S do produto: {{ $venda->numero_serie }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8 ">
+                                <small>Valor: R${{ $venda->preco_venda }}</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Data da compra:
+                                    {{ \Carbon\Carbon::parse($venda->data_venda)->format('d/m/Y') }}</small>
+                            </div>
+                            @if ($dataGarantia->isBefore($dataAtual))
+                                <div class="col-sm-12 col-md-8">
+                                    <small>Data da garantia:
+                                        <small class="text-danger">
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}
+                                        </small>
+                                    </small>
+                                </div>
+                                <div class="col-sm-12 col-md-8  ">
+                                    <small>Status:
+                                        <small class="text-danger">Fora da garantia</small>
+                                        <i class="fa-solid fa-exclamation" style="color: #db0000;"></i>
+                                    </small>
+                                </div>
+                            @else
+                                <div class="col-sm-12 col-md-8  ">
+                                    <small>Data da garantia:
+                                        <small class="text-success">
+                                            {{ \Carbon\Carbon::parse($venda->data_garantia)->format('d/m/Y') }}
+                                        </small>
+                                    </small>
+                                </div>
+                                <div class="col-sm-12 col-md-8  ">
+                                    <small>Status:
+                                        <small class="text-success">Dentro da garantia</small>
+                                        <i class="fa-solid fa-check" style="color: #0aae25;"></i>
+                                    </small>
+                                </div>
+                            @endif
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Obsevações: {{ $venda->observacao }}</small>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row">
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Cliente: ----</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8 ">
+                                <small>Valor: ----</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Data da compra: ----</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Data da garantia: ----</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>N/S do produto: ----</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Obsevações: ----</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Status: ----</small>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <hr class="text-white">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 text-white mt-4">
+                    <p>
+                        O que a garantia da loja cobre? <br>
+                    <ol>
+                        <li>SSD MUITO lento, incompatível com as velocidades referência.</li>
+                        <li>SSD em formato RAW.</li>
+                        <li>só liga o led, mas não inicia.</li>
+                        <li>Não gostei da cor</li>
+                    </ol>
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-6 text-white mt-4">
+                    <p>
+                        O que NÃO cobre? <br>
+                    <ol>
+                        <li>máquina não suporta entrada do SSD (m.2, Sata).</li>
+                        <li>me arrependi da compra.</li>
+                        <li>quero um tamanho maior. </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
         </div>
-        @include('visitante.layout._partials.footerContato')
-    </div>
+        {{-- <script>
+            function trocarImagem(el) {
+                var imgProduto = document.getElementById("imgProduto");
+                imgProduto.src = el.src;
+            }
+        </script> --}}
+    </main>
+
+
+
 @endsection
