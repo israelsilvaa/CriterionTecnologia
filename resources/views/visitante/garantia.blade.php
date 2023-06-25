@@ -32,8 +32,7 @@
 
                 <div class="col-sm-12 col-md-4 mt-4">
                     @if (isset($venda))
-                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark"
-                            id="imgProduto">
+                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark" id="imgProduto">
                     @else
                         <img src="{{ url('storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png') }}"
                             class="img-thumbnail bg-dark" id="imgProduto">
