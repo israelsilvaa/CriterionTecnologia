@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('geracoes', function (Blueprint $table) {
             $table->id();
-            $table->string('geracao', 20);
+            $table->string('geracao', 50);
             $table->timestamps();
         });
     }
