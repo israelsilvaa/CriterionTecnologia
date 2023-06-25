@@ -9,11 +9,10 @@
             <div class="row g-3 ">
                 <h1 class="text-center text-white">Garantia</h1>
                 <hr class="text-white">
-                <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center text-white ">
+                <form method="POST" action="{{ route('visitante.verificarGarantia') }}" class="text-center text-white ">
                     @csrf
                     <label for="">Número de série:</label>
-                    <input type="text" name="numero_serie" value="{{ old('numero_serie') }}" id=""
-                        placeholder="NV3000500GB">
+                    <input type="text" name="numero_serie" id="" placeholder="NV3000500GB">
 
                     <button type="submit" class="btn btn-success">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -33,9 +32,11 @@
 
                 <div class="col-sm-12 col-md-4 mt-4">
                     @if (isset($venda))
-                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark" id="imgProduto">
+                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark"
+                            id="imgProduto">
                     @else
-                        <img src="{{ url("storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png") }}" class="img-thumbnail bg-dark" id="imgProduto">
+                        <img src="{{ url('storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png') }}"
+                            class="img-thumbnail bg-dark" id="imgProduto">
                     @endif
                     <br class="clearfix">
                     {{-- <div class="row my-3 gx-2">
@@ -224,7 +225,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
         {{-- <script>
             function trocarImagem(el) {
