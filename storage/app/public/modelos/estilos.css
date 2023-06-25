@@ -1,0 +1,22 @@
+body {
+    min-width: 372px;
+}
+
+.wrapper {
+    min-height: 100vh;
+}
+
+p.truncar-3l {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fundo-dark {
+    /* background-color: rgb(27, 27, 27); */
+    /* background-color: #000000; */
+    background-color: #141414;
+    /* background-color: #230046; */
+}
