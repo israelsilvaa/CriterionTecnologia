@@ -9,7 +9,8 @@
         <div class="container">
             <div class="row g-3">
                 <div class="col-12 col-sm-6">
-                    <img src="{{ url("storage/{$modelo->imagem_card}")}}" class="img-thumbnail mt-2" id="imgProduto">
+                    <img src="{{ url("storage/{$modelo->imagem_card}") }}" class="img-thumbnail mt-2 bg-dark" id="imgProduto">
+                    {{-- <img src="{{ url("storage/modelos/400x200.png") }}" class="img-thumbnail mt-2" id="imgProduto"> --}}
                     <br class="clearfix">
                     {{-- <div class="row my-3 gx-3">
                         <div class="col-3">
@@ -37,7 +38,7 @@
                             <small>modelo: {{ $modelo->modelo }}</small>
                         </div>
                         <div class="col-sm-12 col-md-8  ">
-                            <small>Tipo: {{ $modelo->tipo }}</small>
+                            <small>Interface: {{ $modelo->tipo }}</small>
                         </div>
                         <div class="col-sm-12 col-md-8  ">
                             <small>Capacidade: {{ $modelo->capacidade }}</small>
@@ -53,10 +54,10 @@
                             <small>Aplicação: {{ $modelo->aplicacao }}</small>
                         </div>
                         <div class="col-sm-12 col-md-8 ">
-                            <small>dimensões: 
-                                {{ $modelo->altura}}{{$modelo->unidade_medida}} x
-                                {{$modelo->largura}}{{ $modelo->unidade_medida}} x
-                                {{$modelo->profundidade}}{{ $modelo->unidade_medida}}
+                            <small>dimensões:
+                                {{ $modelo->altura }}{{ $modelo->unidade_medida }} x
+                                {{ $modelo->largura }}{{ $modelo->unidade_medida }} x
+                                {{ $modelo->profundidade }}{{ $modelo->unidade_medida }}
                             </small>
                         </div>
                     </div>
@@ -76,22 +77,22 @@
                         <p class="text-center mt-4">
                             <a href="#" class="btn btn-lg btn-warning disabled mb-3 mb-xl-0 me-2">
                                 <i class="fa-solid fa-triangle-exclamation"></i>
-                                    Reabastecendo estoque.
-                                </a>
-                                {{-- <button class="btn btn-lg btn-outline-danger">
+                                Reabastecendo estoque.
+                            </a>
+                            {{-- <button class="btn btn-lg btn-outline-danger">
                             <i class="bi-heart"></i> Adicionar aos Favoritos
                         </button> --}}
-                            </p>
-     @endif
+                        </p>
+                    @endif
                 </div>
             </div>
+            <script>
+                function trocarImagem(el) {
+                    var imgProduto = document.getElementById("imgProduto");
+                    imgProduto.src = el.src;
+                }
+            </script>
         </div>
-        <script>
-            function trocarImagem(el) {
-                var imgProduto = document.getElementById("imgProduto");
-                imgProduto.src = el.src;
-            }
-        </script>
     </main>
 
 @endsection

@@ -4,6 +4,11 @@
 
 @section('conteudo')
 
+{{-- sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px,
+xxl: 1400px --}}
     <div class="container">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -15,27 +20,25 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="3000">
-                    <img src="{{ asset('/images/01.jpg') }}" class="d-none d-md-block w-100" alt="...">
-                    <img src="{{ asset('/images/01_pequena.jpg') }}" class="d-block d-md-none w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Varias capacidades</h5>
-                        <p>Modelos com 256gb, 512gb e 1tb para não faltar espaço.</p>
+                <div class="carousel-item active" data-bs-interval="6000">
+                    <img src="{{ url('storage/modelos/nx576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/nx768.png') }}" class="d-none d-md-block d-lg-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/nx992.png') }}" class="d-none d-lg-block w-100" alt="992">
+                    <div class="carousel-caption ">
+                        
                     </div>
                 </div>
-                <div class="carousel-item " data-bs-interval="3000">
-                    <img src="{{ asset('/images/02.jpg') }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
+                <div class="carousel-item " data-bs-interval="6000">
+                    <img src="{{ url('storage/modelos/nt576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/nt768.png') }}" class="d-none d-md-block d-lg-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/nt992.png') }}" class="d-none d-lg-block w-100" alt="992">
+                   
                 </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{{ asset('/images/03.jpg') }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+                <div class="carousel-item" data-bs-interval="6000">
+                    <img src="{{ url('storage/modelos/sata576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/sata768.png') }}" class="d-none d-md-block d-lg-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/sata992.png') }}" class="d-none d-lg-block w-100" alt="992">
+                   
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"

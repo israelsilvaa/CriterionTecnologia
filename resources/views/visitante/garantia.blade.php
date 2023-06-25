@@ -6,10 +6,10 @@
 
     <main class="flex-fill">
         <div class="container">
-            <div class="row g-3 text-white">
-                <h1 class="text-center">Garantia</h1>
+            <div class="row g-3 ">
+                <h1 class="text-center text-white">Garantia</h1>
                 <hr class="text-white">
-                <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center ">
+                <form action="{{ route('visitante.verificarGarantia') }}" method="post" class="text-center text-white ">
                     @csrf
                     <label for="">Número de série:</label>
                     <input type="text" name="numero_serie" value="{{ old('numero_serie') }}" id=""
@@ -33,9 +33,9 @@
 
                 <div class="col-sm-12 col-md-4 mt-4">
                     @if (isset($venda))
-                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail" id="imgProduto">
+                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark" id="imgProduto">
                     @else
-                        <img src="{{ url("storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png") }}" class="img-thumbnail" id="imgProduto">
+                        <img src="{{ url("storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png") }}" class="img-thumbnail bg-dark" id="imgProduto">
                     @endif
                     <br class="clearfix">
                     {{-- <div class="row my-3 gx-2">
@@ -57,7 +57,7 @@
                 <div class="col-sm-12 col-md-4 text-white mt-4">
                     <h1>Detalhes do produto</h1>
                     @if (isset($venda))
-                        <div class="row">
+                        <div class="row text-white">
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Marca: {{ $produto->marca }}</small>
                             </div>
@@ -68,8 +68,7 @@
                                 <small>N/S: {{ $produto->numero_serie }}</small>
                             </div>
                             <div class="col-sm-12 col-md-8  ">
-                                {{-- <small>Tipo: SATA Rev. 3.0 (6Gb/s) Compatível com SATA Rev. 2.0 (3Gb/s)</small> --}}
-                                <small>Tipo: {{ $produto->tipo }} </small>
+                                <small>Interface: {{ $produto->tipo }}</small>
                             </div>
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Capacidade: {{ $produto->capacidade }}</small>
@@ -89,7 +88,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="row">
+                        <div class="row text-white">
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Marca: -</small>
                             </div>
@@ -97,7 +96,10 @@
                                 <small>modelo: -</small>
                             </div>
                             <div class="col-sm-12 col-md-8  ">
-                                <small>Tipo: -</small>
+                                <small>N/S: -</small>
+                            </div>
+                            <div class="col-sm-12 col-md-8  ">
+                                <small>Interface: -</small>
                             </div>
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Capacidade: -</small>
@@ -117,14 +119,14 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-sm-12 col-md-4 text-white mt-4">
+                <div class="col-sm-12 col-md-4 text-white mt-4 text-white">
                     <h1>Detalhes da venda</h1>
                     @if (isset($venda))
                         @php
                             $dataGarantia = \Carbon\Carbon::parse($venda->data_garantia);
                             $dataAtual = \Carbon\Carbon::now();
                         @endphp
-                        <div class="row">
+                        <div class="row text-white">
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Cliente: {{ $venda->cliente }}</small>
                             </div>
@@ -172,7 +174,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="row">
+                        <div class="row text-white">
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Cliente: ----</small>
                             </div>

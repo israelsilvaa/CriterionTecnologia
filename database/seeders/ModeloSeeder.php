@@ -32,7 +32,7 @@ class ModeloSeeder extends Seeder
         $modelo->nome_produto = 'KingSpec NVMe 512gb';
         $modelo->nome_modelo = 'NX-512GB';
         $modelo->marca_id = 1;
-        $modelo->tipo_id = 1;
+        $modelo->tipo_id = 2;
         $modelo->capacidade_id = 3;
         $modelo->velocidade_id = 4;
         $modelo->aplicacao_id = 1;
@@ -46,7 +46,7 @@ class ModeloSeeder extends Seeder
         $modelo->nome_produto = 'KingSpec NVMe 1tb';
         $modelo->nome_modelo = 'NX-1TB';
         $modelo->marca_id = 1;
-        $modelo->tipo_id = 1;
+        $modelo->tipo_id = 2;
         $modelo->capacidade_id = 4;
         $modelo->velocidade_id = 4;
         $modelo->aplicacao_id = 1;
