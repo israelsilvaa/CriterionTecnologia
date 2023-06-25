@@ -15,7 +15,7 @@ class GeracaoSeeder extends Seeder
     {
         //NX series 1
         $geracao = new Geracao();
-        $geracao->geracao = 'Não se aplica';
+        $geracao->geracao = 'SATA Rev. 3.0 (6Gb/s)';
         $geracao->save();
        
         //NX series 1

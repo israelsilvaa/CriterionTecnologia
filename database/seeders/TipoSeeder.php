@@ -18,7 +18,7 @@ class TipoSeeder extends Seeder
         $tipo2->nome_tipo = 'Sata III';
         $tipo2->save();
 
-        //NX series 1
+        //NVMe
         $tipo = new Tipo();
         $tipo->nome_tipo = 'NVMe M.2';
         $tipo->save();

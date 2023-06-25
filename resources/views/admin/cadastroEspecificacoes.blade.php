@@ -32,7 +32,7 @@
 
                 <div class="row  justify-content-center">
                     <div class="col-md-8">
-                        <form action="{{ route('admin.cadastroModelo') }}" method="post">
+                        <form action="{{ route('admin.cadastroModelo') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <fieldset>
                                 <legend>Modelo</legend>
@@ -45,28 +45,40 @@
                                     </select><br />
                                 </div>
                                 <div class="row  input-group mb-1">
-                                    <div class="col-6 ">
-                                        <label for="">nome do modelo</label>
-                                        <input type="text" name="nome_modelo" id="" placeholder="P3-512">
-                                        
+                                    <div class="col-4 ">
+                                        <div class="form-floating">
+                                            <input type="text" name="nome_modelo" class="form-control"
+                                                id="floatingPassword" placeholder=" ">
+                                            <label for="floatingPassword">Modelo do modelo</label>
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="">nome do produto</label>
-                                        <input type="text" name="nome_produto" id="" placeholder="SSD Sata 2.5">
+                                    <div class="col-4">
+                                        <div class="form-floating">
+                                            <input type="text" name="nome_produto" class="form-control"
+                                                id="floatingPassword" placeholder=" ">
+                                            <label for="floatingPassword">Nome do produto</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-floating">
+                                            <input type="number" name="preco" class="form-control"
+                                                id="floatingPassword" placeholder=" ">
+                                            <label for="floatingPassword">Preço R$150</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="input-group mb-1">
                                     <select class="form-select form-select-sm" name="tipo_id" id="">
                                         <option value="0" selected>Tipo</option>
                                         @foreach ($listaTipo as $tipo)
-                                        <option value="{{ $tipo->id }}">{{ $tipo->nome_tipo }}</option>
+                                            <option value="{{ $tipo->id }}">{{ $tipo->nome_tipo }}</option>
                                         @endforeach
                                     </select><br />
-                               
+
                                     <select class="form-select form-select-sm" name="capacidade_id" id="">
                                         <option value="0" selected>Capacidade</option>
                                         @foreach ($listaCapacidade as $capacidade)
-                                        <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
+                                            <option value="{{ $capacidade->id }}">{{ $capacidade->capacidade }}</option>
                                         @endforeach
                                     </select><br />
                                 </div>
@@ -74,10 +86,10 @@
                                     <select class="form-select form-select-sm" name="velocidade_id" id="">
                                         <option value="0" selected>Velocidade</option>
                                         @foreach ($listaVelocidade as $velocidade)
-                                            <option value="{{ $velocidade->id }}">{{ $velocidade->leitura}}-{{ $velocidade->escrita}}</option>
+                                            <option value="{{ $velocidade->id }}">
+                                                {{ $velocidade->leitura }}-{{ $velocidade->escrita }}</option>
                                         @endforeach
                                     </select><br />
-                                    
                                     <select class="form-select form-select-sm" name="aplicacao_id" id="">
                                         <option value="0" selected>Aplicação</option>
                                         @foreach ($listaAplicacao as $aplicacao)
@@ -91,9 +103,22 @@
                                         @foreach ($listaGeracao as $geracao)
                                             <option value="{{ $geracao->id }}">{{ $geracao->geracao }}</option>
                                         @endforeach
-                                    </select><br />
-                                    <input type="text" name="preco" id="" placeholder="Preço R$400">
-                                    <button class="btn btn-success" type="submit">cadastrar</button>
+                                    </select>
+                                    <select class="form-select form-select-sm" name="dimensoes_id" id="">
+                                        <option value="0" selected>Dimensões</option>
+                                        @foreach ($listaDimensoes as $dimensao)
+                                            <option value="{{ $dimensao->id }}">
+                                                {{ $dimensao->altura }}x{{ $dimensao->largura }}x{{ $dimensao->profundidade }}
+                                            </option>
+                                        @endforeach
+                                    </select><br/>
+                                </div>
+                                <div class="input-group mb-1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFileMultiple" class="form-label">Imagem</label>
+                                    <input class="form-control" name="imagem_card" type="file" id="formFileMultiple" multiple>
+                                    <button class="btn btn-success form-control" type="submit">cadastrar</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -169,10 +194,29 @@
                             <fieldset>
                                 <legend>Geração</legend>
                                 <div class="input-group mb-1">
-                                    <input type="text" name="geracao" id=""
-                                        placeholder="Gen5.0x4">
+                                    <input type="text" name="geracao" id="" placeholder="Gen5.0x4">
                                     <button class="btn btn-success" type="submit">cadastrar</button>
                                 </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row  justify-content-center">
+                    <div class="col-md-8">
+                        <form action="{{ route('admin.cadastroDimensoes') }}" method="post">
+                            @csrf
+                            <fieldset>
+                                <legend>Dimensões</legend>
+                                <div class="input-group mb-1">
+                                    <input type="number" name="altura" id="" placeholder="altura">
+                                    <input type="number" name="largura" id="" placeholder="largura">
+                                    <input type="number" name="profundidade" id="" placeholder="profundidade">
+                                    <input type="text" name="unidade_medida" id=""
+                                        placeholder="uni. de medida(mm,cm)">
+                                    <br>
+                                </div>
+                                <button class="btn btn-success" type="submit">cadastrar</button>
                             </fieldset>
                         </form>
                     </div>

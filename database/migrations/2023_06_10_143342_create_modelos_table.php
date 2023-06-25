@@ -23,6 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger('velocidade_id');
             $table->unsignedBigInteger('aplicacao_id');
             $table->unsignedBigInteger('geracao_id');
+            $table->unsignedBigInteger('dimensoes_id');
+            $table->string('imagem_card');
             $table->float('preco', 8, 2);
             $table->timestamps();
             
@@ -32,6 +34,7 @@ return new class extends Migration
             $table->foreign('velocidade_id')->references('id')->on('velocidades');
             $table->foreign('aplicacao_id')->references('id')->on('aplicacoes');
             $table->foreign('geracao_id')->references('id')->on('geracoes');
+            $table->foreign('dimensoes_id')->references('id')->on('dimensoes');
         });
     }
 
