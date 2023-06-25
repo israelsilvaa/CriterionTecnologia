@@ -31,7 +31,7 @@ class VisitanteController extends Controller
 
     public function show(GarantiaRequest $request)
     {
-
+        // dd($request);
         $request->validated();
         $produto = Produto::where('numero_serie', '=', $request->numero_serie)->get()->first();
 
@@ -64,68 +64,69 @@ class VisitanteController extends Controller
     {
         return view('visitante.sobre-nos');
     }
+
     public function produto(int $modelo_id, $disponibilidade)
     {
         $modelo = DB::table("modelos")
-        ->join("marcas", "modelos.marca_id", "=", "marcas.id")
-        ->join("tipos", "modelos.tipo_id", "=", "tipos.id")
-        ->join("capacidades", "modelos.capacidade_id", "=", "capacidades.id")
-        ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
-        ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
-        ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
-        ->join("dimensoes", "modelos.dimensoes_id", "=", "dimensoes.id")
-        ->select(
-            "modelos.nome_produto as produto",
-            "modelos.preco",
-            "marcas.nome_marca as marca",
-            "modelos.nome_modelo as modelo",
-            "tipos.nome_tipo as tipo", 
-            "capacidades.capacidade", 
-            "velocidades.leitura", 
-            "velocidades.escrita", 
-            "aplicacoes.nome_aplicacao as aplicacao", 
-            "geracoes.geracao",
-            "modelos.id as modelo_id",
-            "dimensoes.altura",
-            "dimensoes.largura",
-            "dimensoes.profundidade",
-            "dimensoes.unidade_medida",
-            "modelos.imagem_card",
-        )
-        ->where('modelos.id', $modelo_id)
-        ->get()->first();
+            ->join("marcas", "modelos.marca_id", "=", "marcas.id")
+            ->join("tipos", "modelos.tipo_id", "=", "tipos.id")
+            ->join("capacidades", "modelos.capacidade_id", "=", "capacidades.id")
+            ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
+            ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
+            ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
+            ->join("dimensoes", "modelos.dimensoes_id", "=", "dimensoes.id")
+            ->select(
+                "modelos.nome_produto as produto",
+                "modelos.preco",
+                "marcas.nome_marca as marca",
+                "modelos.nome_modelo as modelo",
+                "tipos.nome_tipo as tipo",
+                "capacidades.capacidade",
+                "velocidades.leitura",
+                "velocidades.escrita",
+                "aplicacoes.nome_aplicacao as aplicacao",
+                "geracoes.geracao",
+                "modelos.id as modelo_id",
+                "dimensoes.altura",
+                "dimensoes.largura",
+                "dimensoes.profundidade",
+                "dimensoes.unidade_medida",
+                "modelos.imagem_card",
+            )
+            ->where('modelos.id', $modelo_id)
+            ->get()->first();
         // dd($disponibilidade);
 
-        return view('visitante.produto', ['modelo'=>$modelo,'disponibilidade' => $disponibilidade]);
+        return view('visitante.produto', ['modelo' => $modelo, 'disponibilidade' => $disponibilidade]);
     }
 
     public function modelos()
     {
         $modelos = DB::table("modelos")
-        ->join("marcas", "modelos.marca_id", "=", "marcas.id")
-        ->join("tipos", "modelos.tipo_id", "=", "tipos.id")
-        ->join("capacidades", "modelos.capacidade_id", "=", "capacidades.id")
-        ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
-        ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
-        ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
-        ->select(
-            "modelos.nome_produto as produto",
-            "modelos.preco",
-            "marcas.nome_marca as marca",
-            "modelos.nome_modelo as modelo",
-            "tipos.nome_tipo as tipo", 
-            "capacidades.capacidade", 
-            "velocidades.leitura", 
-            "velocidades.escrita", 
-            "aplicacoes.nome_aplicacao as aplicacao", 
-            "geracoes.geracao",
-            "modelos.id as modelo_id",
-            "modelos.imagem_card",
-        )
-        ->orderBy('marcas.nome_marca')
-        ->get();
+            ->join("marcas", "modelos.marca_id", "=", "marcas.id")
+            ->join("tipos", "modelos.tipo_id", "=", "tipos.id")
+            ->join("capacidades", "modelos.capacidade_id", "=", "capacidades.id")
+            ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
+            ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
+            ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
+            ->select(
+                "modelos.nome_produto as produto",
+                "modelos.preco",
+                "marcas.nome_marca as marca",
+                "modelos.nome_modelo as modelo",
+                "tipos.nome_tipo as tipo",
+                "capacidades.capacidade",
+                "velocidades.leitura",
+                "velocidades.escrita",
+                "aplicacoes.nome_aplicacao as aplicacao",
+                "geracoes.geracao",
+                "modelos.id as modelo_id",
+                "modelos.imagem_card",
+            )
+            ->orderBy('marcas.nome_marca')
+            ->get();
 
-        foreach($modelos as $ssd){   
+        foreach ($modelos as $ssd) {
             $ssd->disponibilidade = Produto::where('modelo_id', $ssd->modelo_id)->where('status', "Em estoque")->count();
         }
         $modelos = $modelos->sortByDesc('disponibilidade');
