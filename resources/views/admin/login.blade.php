@@ -7,7 +7,7 @@
     <main class="form-signin w-100 m-auto ">
         <form action="{{ route('logar') }}" method="post">
             @csrf
-            <img class="mb-2" src="{{ url('storage/modelos/logo_1.png') }}" alt="" width="315" height="100">
+            <img class="mb-2" src="{{ url('storage/app/public/modelos/logo_1.png') }}" alt="" width="315" height="100">
             <h1 class="h3 mb-3 fw-normal text-success">Login</h1>
 
             <div class="form-floating text-dark">

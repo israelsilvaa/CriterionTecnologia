@@ -6,7 +6,7 @@
     <div class="container bg-secondary mt-5 rounded-4">
         <div class="row justify-content-center">
             <div class="col-auto ">
-                <img src="{{ url('storage/images/logo_1.png') }}" width="190px" height="70px" alt="" />
+                <img src="{{ url('storage/app/public/modelos/logo_1.png') }}" width="190px" height="70px" alt="" />
             </div>
         </div>
         <div class="row justify-content-center">
