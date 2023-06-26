@@ -11,7 +11,7 @@
     {{-- <link rel="stylesheet" href="{{ url('public/storage/modelos/estilos.css') }}"> --}}
 </head>
 
-<body class="bg-dark">
+<body class="bg-secondary">
     <div class="d-flex flex-column wrapper">
         <nav class="navbar navbar-expand-lg bg-dark border-bottom shadow-sm mb-3 ">
             <div class="container ">
