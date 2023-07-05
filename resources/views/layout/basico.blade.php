@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ url('storage/modelos/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
 <body class="fundo-dark">
@@ -18,7 +18,7 @@
                 <div class="row ">
                     <div class="col-auto ">
                         <a href="/">
-                            <img src="{{ url('storage/modelos/logo_1.png') }}" width="150px" height="50px" alt="" />
+                            <img src="{{ url('public/storage/modelos/logo_01.png') }}" width="150px" height="50px" alt="" />
                         </a>
                     </div>
                 </div>
