@@ -29,6 +29,16 @@ class VisitanteController extends Controller
         return view('visitante.garantia');
     }
 
+    public function formasEntrega()
+    {
+        return view('visitante.formas_de_entrega');
+    }
+
+    public function policitaGarantia()
+    {
+        return view('visitante.politicas_de_garantia');
+    }
+
     public function show(GarantiaRequest $request)
     {
         // dd($request);
@@ -56,7 +66,7 @@ class VisitanteController extends Controller
 
             return view('visitante.garantia', ['produto' => $produto, 'venda' => $venda]);
         } else {
-            return redirect()->route('visitante.garantia')->withInput()->withErrors("Sem registro de venda para esse produto");
+            return redirect()->route('visitante.garantia', ['produto' => $produto, 'venda' => $venda])->withInput()->withErrors("Sem registro de venda para esse produto");
         }
     }
 

@@ -9,10 +9,10 @@
             <div class="row g-3 ">
                 <h1 class="text-center text-white">Garantia</h1>
                 <hr class="text-white">
-                <form method="POST" action="{{ route('visitante.verificarGarantia') }}" class="text-center text-white ">
+                <form method="get" action="{{ route('visitante.verificarGarantia') }}" class="text-center text-white ">
                     @csrf
                     <label for="">Número de série:</label>
-                    <input type="text" name="numero_serie" id="" placeholder="NV3000500GB">
+                    <input type="text" name="numero_serie" id="" placeholder="NV3000-500GB">
 
                     <button type="submit" class="btn btn-success">
                         <i class="fa-solid fa-magnifying-glass"></i>

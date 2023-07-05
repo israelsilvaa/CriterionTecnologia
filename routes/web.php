@@ -25,9 +25,11 @@ Route::prefix('/visitante')->group(function(){
     Route::get('/modelos', [VisitanteController::class, 'modelos'])->name('visitante.modelos');
    
     Route::get('/garantia', [VisitanteController::class, 'garantia'])->name('visitante.garantia');
-    Route::post('/garantiaShow', [VisitanteController::class, 'show'])->name('visitante.verificarGarantia');
+    Route::get('/garantiaShow', [VisitanteController::class, 'show'])->name('visitante.verificarGarantia');
    
     Route::get('/sobre-nos', [VisitanteController::class, 'sobre_nos'])->name('visitante.sobre-nos');
+    Route::get('/formasDeEntrega', [VisitanteController::class, 'formasEntrega'])->name('visitante.formasEntrega');
+    Route::get('/politicasDeGarantia', [VisitanteController::class, 'policitaGarantia'])->name('visitante.politicaGarantia');
     Route::get('/produto/{modelo_id}/{disponibilidade}', [VisitanteController::class, 'produto'])->name('visitante.produto');
 });
 
