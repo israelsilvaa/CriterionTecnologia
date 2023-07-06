@@ -61,7 +61,7 @@
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">Número do Lote</span>
                             <input type="text" class="form-control" name="lote" id=""
-                                placeholder="#55 " aria-label="numero_lote" aria-describedby="basic-addon1">
+                                placeholder="2/2023 " aria-label="numero_lote" aria-describedby="basic-addon1">
                         </div>
                     </div>
                 </div>
