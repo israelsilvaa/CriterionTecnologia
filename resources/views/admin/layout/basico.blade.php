@@ -41,9 +41,9 @@
                     </ul>
                     <div class="align-self-end">
                         <ul class="navbar-nav">
-                            <li class="nav-item ">
+                            {{-- <li class="nav-item ">
                                 <p class="nav-link link-secondary ">{{ $_SESSION['name']}}</p>
-                            </li>
+                            </li> --}}
                             <li class="nav-item ">
                                 <a class="nav-link link-secondary " aria-current="page"
                                     href="{{ route('admin.cadastroEspecificacoes') }}">Cadastrar

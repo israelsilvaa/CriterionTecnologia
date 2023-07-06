@@ -20,13 +20,11 @@ class LoginController extends Controller
         $senha = $request->senha;
 
         $credentials = [
-            "name" => Auth::user()->name,
             "email" => $request->usuario,
             "password" => $request->senha
         ];
         if( Auth::attempt($credentials) and Auth::user()->perfil_id == 1){
             session_start();
-            $_SESSION['name'] = $credentials['name'];
             $_SESSION['email'] = $credentials['email'];
 
             return redirect()->route('admin.painel');
