@@ -33,20 +33,20 @@ Route::prefix('/visitante')->group(function(){
     Route::get('/produto/{modelo_id}/{disponibilidade}', [VisitanteController::class, 'produto'])->name('visitante.produto');
 });
 
+
 Route::get('/login', [LoginController::class, 'formLogin'])->name('login');
-Route::post('/login', [LoginController::class, 'logar'])->name('logar');
+Route::post('/login', [LoginController::class, 'logar'])->name('login');
 
-
-Route::prefix('/admin')->group(function(){
+Route::middleware('autenticacao')->prefix('/admin')->group(function(){
     Route::get('/viewPainel', [AdminController::class, 'viewPainel'])->name('admin.painel');
-
+    
     Route::get('/cadastarProduto', [AdminController::class, 'viewCadastroProduto'])->name('admin.cadastroProduto');
     Route::post('/cadastarProduto', [AdminController::class, 'store'])->name('admin.cadastroProduto');
     Route::post('/selectMarca', [AdminController::class, 'selectMarca'])->name('admin.selectMarca');
     
     Route::get('/cadastarVenda', [AdminController::class, 'viewCadastroVenda'])->name('admin.cadastroVenda');
     Route::post('/cadastarVenda', [AdminController::class, 'storeVenda'])->name('admin.cadastroVenda');
-
+    
     Route::get('/cadastroEspecificacoes', [AdminController::class, 'viewCadastroEspecificacoes'])->name('admin.cadastroEspecificacoes');
     Route::post('/cadastroMarca', [AdminController::class, 'cadastroMarca'])->name('admin.cadastroMarca');
     Route::post('/cadastroModelo', [AdminController::class, 'cadastroModelo'])->name('admin.cadastroModelo');
@@ -56,15 +56,14 @@ Route::prefix('/admin')->group(function(){
     Route::post('/cadastroAplicacao', [AdminController::class, 'cadastroAplicacao'])->name('admin.cadastroAplicacao');
     Route::post('/cadastroGeracao', [AdminController::class, 'cadastroGeracao'])->name('admin.cadastroGeracao');
     Route::post('/cadastroDimensoes', [AdminController::class, 'cadastroDimensoes'])->name('admin.cadastroDimensoes');
+    
+    Route::get('/sair', [LoginController::class, 'sair'])->name('admin.sair');
 });
-
 
 Route::prefix('/cliente')->group(function(){
     Route::get('/painel', [ClienteController::class, 'viewPainel'])->name('cliente.painel');
 });
 
-
-
-// Route::fallback(function(){
-//     return view('fallback');
-// });
+Route::fallback(function(){
+    return view('fallback');
+});

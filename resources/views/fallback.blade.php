@@ -29,7 +29,7 @@
 
         <div class="row col-6 offset-3 mt-4">
             <footer class="text-center">
-                <a href="/teste" class="link link-success text-dark"> admin</a> |
+                {{-- <a href="/teste" class="link link-success text-dark"> admin</a> | --}}
                 <span>Desenvolvido por IsraelSilva</span>
             </footer>
         </div>

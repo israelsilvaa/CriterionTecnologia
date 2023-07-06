@@ -5,12 +5,7 @@
 @section('conteudo')
     <div class="container bg-secondary mt-5 rounded-5">
         <div class="row justify-content-center">
-            <div class="col-auto ">
-                <img src="{{ asset('/images/logo_1.png') }}" width="190px" height="70px" alt="" />
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <h1 class="text-center">Adicionar Venda</h1>
+            <h2 class="text-center">Adicionar Venda</h2>
             <div class="col-md-8">
                 <form action="{{ route('admin.cadastroVenda') }}" method="post">
                     @csrf
@@ -49,12 +44,6 @@
                     
                 </form>
             </div>
-        </div>
-
-        <div class="row col-6 offset-3 mt-4">
-            <footer class="text-danger text-center">
-                <a href="{{ route('admin.painel') }}" class="link link-info text-dark"> Voltar</a>
-            </footer>
         </div>
     </div>
 

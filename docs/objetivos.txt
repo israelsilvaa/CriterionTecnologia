@@ -1,4 +1,4 @@
-3_ordenar modelos pelo status(disponivel/indisponivel)
 4_validações para todas as telas( fazer com forma isolada form request)
+5_ migrate refresh ma produção e login de adm nas seeds
 
 FINAL _ deploy na hostinger??

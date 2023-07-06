@@ -61,8 +61,8 @@
                     <div class="col-12 col-md-6 text-center">
                         <a class="text-decoration-none link-secondary " href="{{route('visitante.formasEntrega')}}">Formas de entrega</a><br>
                         <a class="text-decoration-none link-secondary " href="{{route('visitante.politicaGarantia')}}">Políticas de Garantia</a><br>
-                        {{-- <a class="text-decoration-none link-secondary" href="#">Termos de uso</a><br> --}}
-                        <a class="text-decoration-none link-secondary" href="/login">Área do administrador</a><br>
+                        <a class="text-decoration-none link-secondary " href="#">Políticas de privacidade (em construção)</a><br>
+                        <a class="text-decoration-none link-secondary" href="#">Termos de uso (em construção)</a><br>
                     </div>
                     <div class="col-12 col-md-6 text-center ">
 
