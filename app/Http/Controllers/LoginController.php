@@ -14,7 +14,6 @@ class LoginController extends Controller
     
     public function logar(LoginRequest $request){
         
-        
         $request->validated();
 
         $usuario = $request->usuario;

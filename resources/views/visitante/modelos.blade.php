@@ -66,7 +66,7 @@
 
         </div>
     </main>
-    <div class="container">
+    {{-- <div class="container">
 
         <div class="row pb-3">
             <div class="col-10">
@@ -104,5 +104,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection()

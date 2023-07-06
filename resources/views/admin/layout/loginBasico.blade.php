@@ -96,8 +96,8 @@
 
 
     <!-- Custom styles for this template -->
-    <link href=" {{ asset('/sign-in.css') }} " rel="stylesheet">
-    <title>@yield('titulo')</title>
+    <link rel="stylesheet" href="https://criteriontecnologia-production.up.railway.app/sign-in.css">
+    <title>@yield('titulo')</title> 
 </head>
 
 <body class="d-flex align-items-center py-4  bg-dark text-white">
