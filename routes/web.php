@@ -25,7 +25,7 @@ Route::prefix('/visitante')->group(function(){
     Route::get('/modelos', [VisitanteController::class, 'modelos'])->name('visitante.modelos');
    
     Route::get('/garantia', [VisitanteController::class, 'garantia'])->name('visitante.garantia');
-    Route::get('/garantiaShow', [VisitanteController::class, 'show'])->name('visitante.verificarGarantia');
+    Route::post('/garantia', [VisitanteController::class, 'show'])->name('visitante.garantia');
    
     Route::get('/sobre-nos', [VisitanteController::class, 'sobre_nos'])->name('visitante.sobre-nos');
     Route::get('/formasDeEntrega', [VisitanteController::class, 'formasEntrega'])->name('visitante.formasEntrega');
@@ -64,6 +64,6 @@ Route::prefix('/cliente')->group(function(){
     Route::get('/painel', [ClienteController::class, 'viewPainel'])->name('cliente.painel');
 });
 
-Route::fallback(function(){
-    return view('fallback');
-});
+// Route::fallback(function(){
+//     return view('fallback');
+// });

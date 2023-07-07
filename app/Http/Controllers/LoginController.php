@@ -16,9 +16,6 @@ class LoginController extends Controller
         
         $request->validated();
         
-        $email = $request->usuario;
-        $senha = $request->senha;
-
         $credentials = [
             "email" => $request->usuario,
             "password" => $request->senha

@@ -20,3 +20,7 @@ p.truncar-3l {
     background-color: #141414;
     /* background-color: #230046; */
 }
+
+.texto {
+    text-align: justify;
+}

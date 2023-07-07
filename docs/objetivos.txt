@@ -2,3 +2,11 @@
 5_ migrate refresh ma produção e login de adm nas seeds
 
 FINAL _ deploy na hostinger??
+
+inicio:
+    composer install && php artisan migrate:refresh && php artisan db:seed && php artisan storage:link
+
+normal:
+    composer install 
+
+mkdir -p /app/bootstrap/cache && chmod -R 777 /app/bootstrap/cache

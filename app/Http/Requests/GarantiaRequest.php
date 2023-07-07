@@ -22,7 +22,7 @@ class GarantiaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'numero_serie' => 'required|min:3|exists:produtos,numero_serie'  
+            'numero_serie' => 'required|min:3|exists:Produtos,numero_serie'  
         ];
     }
 }
