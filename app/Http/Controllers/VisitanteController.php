@@ -41,17 +41,11 @@ class VisitanteController extends Controller
 
     public function show(GarantiaRequest $request)
     {
-        // dd($request);
         $request->validated();
         $produto = Produto::where('numero_serie', '=', $request->numero_serie)->get()->first();
-
         $venda = Venda::where('produto_id', $produto->id)->get()->first();
-        if ($venda != null) {
-
-            $venda = Venda::where('produto_id', '=', $produto->id)->get()->first();
-            $venda->numero_serie = $produto->numero_serie;
+        if (isset($venda->id)) {
             $modelo = Modelo::where('id', '=', $produto->modelo_id)->get()->first();
-
             $produto->marca = Marca::where('id', '=', $produto->marca_id)->get()->pluck('nome_marca')->first();
             $produto->modelo = Modelo::where('id', '=', $produto->modelo_id)->get()->pluck('nome_modelo')->first();
             $produto->imagem_card = Modelo::where('id', '=', $produto->modelo_id)->get()->pluck('imagem_card')->first();
@@ -65,8 +59,8 @@ class VisitanteController extends Controller
             $produto->numero_serie = $produto->numero_serie;
 
             return view('visitante.garantia', ['produto' => $produto, 'venda' => $venda]);
-        } else {
-            return redirect()->route('visitante.garantia', ['produto' => $produto, 'venda' => $venda])->withInput()->withErrors("Sem registro de venda para esse produto");
+        }else{
+            return redirect()->route('visitante.garantia')->withInput()->withErrors("Sem registro de venda para esse produto");
         }
     }
 
