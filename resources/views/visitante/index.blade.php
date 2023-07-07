@@ -4,7 +4,7 @@
 
 @section('conteudo')
 
-{{-- sm: 576px,
+    {{-- sm: 576px,
 md: 768px,
 lg: 992px,
 xl: 1200px,
@@ -22,23 +22,26 @@ xxl: 1400px --}}
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="6000">
                     <img src="{{ url('storage/modelos/nx576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
-                    <img src="{{ url('storage/modelos/nx768.png') }}" class="d-none d-md-block d-lg-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/nx768.png') }}" class="d-none d-md-block d-lg-none w-100"
+                        alt="...">
                     <img src="{{ url('storage/modelos/nx992.png') }}" class="d-none d-lg-block w-100" alt="992">
                     <div class="carousel-caption ">
-                        
+
                     </div>
                 </div>
                 <div class="carousel-item " data-bs-interval="6000">
                     <img src="{{ url('storage/modelos/nt576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
-                    <img src="{{ url('storage/modelos/nt768.png') }}" class="d-none d-md-block d-lg-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/nt768.png') }}" class="d-none d-md-block d-lg-none w-100"
+                        alt="...">
                     <img src="{{ url('storage/modelos/nt992.png') }}" class="d-none d-lg-block w-100" alt="992">
-                   
+
                 </div>
                 <div class="carousel-item" data-bs-interval="6000">
                     <img src="{{ url('storage/modelos/sata576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
-                    <img src="{{ url('storage/modelos/sata768.png') }}" class="d-none d-md-block d-lg-none w-100" alt="...">
+                    <img src="{{ url('storage/modelos/sata768.png') }}" class="d-none d-md-block d-lg-none w-100"
+                        alt="...">
                     <img src="{{ url('storage/modelos/sata992.png') }}" class="d-none d-lg-block w-100" alt="992">
-                   
+
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -55,30 +58,40 @@ xxl: 1400px --}}
     </div>
     <main class="flex-fill">
         <div class="container text-white">
+            <div class="row">
+                <hr>
+                <h2>O que é um SSD?</h2>
+                <p class="texto">
+                    O SSD (Solid State Drive ou unidade em estado sólido) é um componente de hardware que substitui o antigo
+                    HD
+                    (Hard Disk ou disco rígido) como unidade de armazenamento de dados nos PCs. Muito mais rápido, o SSD não
+                    possui
+                    discos físicos ou agulhas magnéticas, sendo capaz de acessar dados em uma fração de segundo e tornar seu
+                    computador mais ágil para abrir programas e executar tarefas.
+                </p>
+            </div>
 
-            <hr>
-            <h2>O que é um SSD?</h2>
-            <p>
-                O SSD (Solid State Drive ou unidade em estado sólido) é um componente de hardware que substitui o antigo HD
-                (Hard Disk ou disco rígido) como unidade de armazenamento de dados nos PCs. Muito mais rápido, o SSD não
-                possui
-                discos físicos ou agulhas magnéticas, sendo capaz de acessar dados em uma fração de segundo e tornar seu
-                computador mais ágil para abrir programas e executar tarefas.
-            </p>
-            <h2>Como funciona um SSD?</h2>
-            Os SSDs mais comuns no mercado possuem dois componentes fundamentais: a memória flash e o controlador.
+            <div class="row">
+                <h2>Como funciona um SSD?</h2>
 
-            <p>
-                A memória flash guarda todos os arquivos e, diferente dos discos magnéticos dos HDs, não necessita de partes
-                móveis
-                nem motores para funcionar. Todas as operações são feitas eletricamente, tornando as operações de leitura e
-                escrita
-                mais rápidas, além de deixar o drive mais silencioso e resistente a vibrações e quedas.
-            </p>
+                <p class="texto">
+                    Os SSDs mais comuns no mercado possuem dois componentes fundamentais: a memória flash e o controlador. A
+                    memória flash guarda todos os arquivos e, diferente dos discos magnéticos dos HDs, não necessita de
+                    partes
+                    móveis
+                    nem motores para funcionar. Todas as operações são feitas eletricamente, tornando as operações de
+                    leitura e
+                    escrita
+                    mais rápidas, além de deixar o drive mais silencioso e resistente a vibrações e quedas.
+                </p>
 
-            <p>A Criterion trás essa tecnologia até você, trabalhamos com os principais modelos do mercado como: Sata 3 e
-                NVMe
-                M.2, não perca mais tempo, peça já o seu!</p>
+                <p class="texto">A Criterion traz essa tecnologia até você, trabalhamos com os principais modelos do
+                    mercado como: Sata 3
+                    e
+                    NVMe
+                    M.2, não perca mais tempo, peça já o seu!</p>
+
+            </div>
         </div>
     </main>
 

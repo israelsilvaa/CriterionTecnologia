@@ -3,19 +3,26 @@
 @section('titulo', 'Garantia')
 
 @section('conteudo')
-
     <main class="flex-fill">
         <div class="container">
             <div class="row g-3 ">
                 <h1 class="text-center text-white">Garantia</h1>
                 <hr class="text-white">
-                <form method="get" action="{{ route('visitante.verificarGarantia') }}" class="text-center text-white ">
+                <form method="post" action="{{ route('visitante.garantia') }}" class="text-center text-white ">
                     @csrf
-                    <label for="">Número de série:</label>
-                    <input type="text" name="numero_serie" id="" placeholder="NV3000-500GB">
 
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                    <label for="">Número de série:</label>
+                    <input type="text" name="numero_serie" id=""
+                    @if (isset($produto->numero_serie)) 
+                        value="{{ $produto->numero_serie }}" 
+                    @elseif(old('numero_serie'))
+                        value="{{ old('numero_serie') }}" 
+                    @else
+                        placeholder="NV3000-500GB"
+                    @endif
+                    >
+                        <button type="submit" class="btn btn-success">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     </button><br>
                     @if ($errors->all())
                         @foreach ($errors->all() as $error)
@@ -32,7 +39,8 @@
 
                 <div class="col-sm-12 col-md-4 mt-4">
                     @if (isset($venda))
-                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark" id="imgProduto">
+                        <img src="{{ url("storage/{$produto->imagem_card}") }}" class="img-thumbnail bg-dark"
+                            id="imgProduto">
                     @else
                         <img src="{{ url('storage/modelos/jDII4Q6znFXoQFqBwQAnKoJ01dBLue1emIAqvnmg.png') }}"
                             class="img-thumbnail bg-dark" id="imgProduto">
@@ -130,9 +138,6 @@
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Cliente: {{ $venda->cliente }}</small>
                             </div>
-                            <div class="col-sm-12 col-md-8  ">
-                                <small>N/S do produto: {{ $venda->numero_serie }}</small>
-                            </div>
                             <div class="col-sm-12 col-md-8 ">
                                 <small>Valor: R${{ $venda->preco_venda }}</small>
                             </div>
@@ -186,9 +191,6 @@
                             </div>
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Data da garantia: ----</small>
-                            </div>
-                            <div class="col-sm-12 col-md-8  ">
-                                <small>N/S do produto: ----</small>
                             </div>
                             <div class="col-sm-12 col-md-8  ">
                                 <small>Obsevações: ----</small>
