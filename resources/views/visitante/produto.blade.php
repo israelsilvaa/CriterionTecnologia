@@ -63,25 +63,24 @@
                     </div>
 
                     @if ($disponibilidade)
-                        <p class="text-center mt-4">
+                        <h4 class="text-success text-center mt-2">R$ {{ $modelo->preco }} à vista</h4>
+                        <p class="text-center mt-2">
                             {{-- <a href="https://contate.me/criteriontecnologia" --}}
                             <a href="https://wa.me/55091980175325?text=olá, o {{ $modelo->produto }} ainda está dipsonivel?"
-                                class="btn btn-lg btn-success mb-3 mb-xl-0 me-2">
+                                class="btn btn-lg btn-success mb-3 mb-xl-0 me-2 ">
                                 <i class="bi-whatsapp"></i> Solicitar via whatsapp
                             </a>
                             {{-- <button class="btn btn-lg btn-outline-danger">
-                            <i class="bi-heart"></i> Adicionar aos Favoritos
-                        </button> --}}
+                                    <i class="bi-heart"></i> Adicionar aos Favoritos
+                                </button> --}}
                         </p>
                     @else
-                        <p class="text-center mt-4">
+                        <h4 class="text-secondary text-center mt-2">R$ {{ $modelo->preco }} à vista</h4>
+                        <p class="text-center mt-2">
                             <a href="#" class="btn btn-lg btn-warning disabled mb-3 mb-xl-0 me-2">
                                 <i class="fa-solid fa-triangle-exclamation"></i>
                                 Reabastecendo estoque.
                             </a>
-                            {{-- <button class="btn btn-lg btn-outline-danger">
-                            <i class="bi-heart"></i> Adicionar aos Favoritos
-                        </button> --}}
                         </p>
                     @endif
                 </div>
