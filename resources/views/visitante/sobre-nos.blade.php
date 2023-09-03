@@ -1,6 +1,6 @@
 @extends('layout.basico')
 
-@section('titulo', 'SP-sobre nos')
+@section('titulo', 'Sobre nos')
 
 @section('conteudo')
 

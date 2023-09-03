@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>@yield('titulo')</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://criteriontecnologia-production.up.railway.app/css/estilos.css">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
 <body class="fundo-dark">
@@ -29,7 +33,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav flex-grow-1 ">
                         <li class="nav-item">
-                            <a class="nav-link link-secondary" href="/login">Área do administrador</a>
+                            <a class="nav-link link-secondary" href="{{ route('login') }}">Área do administrador</a>
                         </li>
                     </ul>
                     <div class="align-self-end">
@@ -79,7 +83,7 @@
 
                         <a href="mailto:ct@gmail.com" class="text-decoration-none link-secondary">
                             <i class="fa-regular fa-envelope" style="color: #000000;"></i>
-                            ct@gmail.com
+                            ssd@criteriontecnologia.store
                         </a><br>
                     </div>
                 </div>

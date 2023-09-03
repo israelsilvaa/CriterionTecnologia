@@ -17,7 +17,7 @@
     <title>@yield('titulo')</title>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark wrapper">
 
     @yield('conteudo')
 

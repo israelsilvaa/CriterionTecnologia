@@ -12,7 +12,7 @@
 </head>
 
 <body class="bg-dark">
-    <div class="d-flex flex-column wrapper">
+    <div class="d-flex flex-column ">
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary border-bottom shadow-sm mb-3">
             <div class="container ">
                 <div class="row ">
@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav flex-grow-1 ">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/login">Área do administrador</a>
+                            <a class="nav-link link-secondary" href="{{ route('login') }}">Área do administrador</a>
                         </li>
                     </ul>
                     <div class="align-self-end">
@@ -71,7 +71,7 @@
                             Facebook</a><br>
                         <a>
                             <i class="fa-regular fa-envelope" style="color: #000000;"></i>
-                            ct@gmail.com</a><br>
+                            ssd@criteriontecnologia.store</a><br>
                         <i class="fa-brands fa-whatsapp" style="color: #000000;"></i>
                         <a>(091) 98017-5325</a><br>
                     </div>

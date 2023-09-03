@@ -1,6 +1,6 @@
 @extends('layout.basico')
 
-@section('titulo', 'SP-Detalhes do produto')
+@section('titulo', 'Detalhes do produto')
 
 @section('conteudo')
 
