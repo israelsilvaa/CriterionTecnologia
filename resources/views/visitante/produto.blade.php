@@ -11,19 +11,19 @@
                 <div class="col-12 col-sm-6">
                     <img src="{{ url("storage/{$modelo->imagem_card}") }}" class="img-thumbnail mt-2 bg-dark" id="imgProduto">
                     {{-- <img src="{{ url("storage/modelos/400x200.png") }}" class="img-thumbnail mt-2" id="imgProduto"> --}}
-                    <br class="clearfix">
-                    {{-- <div class="row my-3 gx-3">
+                    {{-- <br class="clearfix">
+                    <div class="row my-3 gx-3">
                         <div class="col-3">
-                            <img src="{{ asset('/images/01.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                            <img src="{{ asset('/storage/modelos/aW7VNJWp8EfZpksNT0AiUGSOkGSL0wtaJFA7YxRt.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
                         </div>
                         <div class="col-3">
-                            <img src="{{ asset('/images/02.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                            <img src="{{ asset('/storage/modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
                         </div>
                         <div class="col-3">
-                            <img src="{{ asset('/images/03.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                            <img src="{{ asset('/storage/modelos/aW7VNJWp8EfZpksNT0AiUGSOkGSL0wtaJFA7YxRt.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
                         </div>
                         <div class="col-3">
-                            <img src="{{ asset('/images/01.jpg') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                            <img src="{{ asset('/storage/modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
                         </div>
                     </div> --}}
                 </div>
@@ -44,8 +44,8 @@
                             <small>Capacidade: {{ $modelo->capacidade }}</small>
                         </div>
                         <div class="col-sm-12 col-md-8 ">
-                            <small>Performance de referência: até {{ $modelo->leitura }} para leitura e
-                                {{ $modelo->escrita }} para gravação</small>
+                            <small>Leitura: {{ $modelo->leitura }} <br>
+                                Escrita: {{ $modelo->escrita }}</small>
                         </div>
                         <div class="col-sm-12 col-md-8 ">
                             <small>Geração: {{ $modelo->geracao }}</small>

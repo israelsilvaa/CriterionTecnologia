@@ -64,8 +64,6 @@
                         <a class="text-decoration-none text-dark" href="/login">Área do administrador</a><br>
                     </div>
                     <div class="col-12 col-md-6 text-center">
-                        
-                        <span>Contatos:</span><br>
                         <a href="http://" class="text-dark text-decoration-none">
                             <i class="fa-brands fa-facebook " style="color: #000000;"></i>
                             Facebook</a><br>

@@ -62,27 +62,26 @@
         <footer class="border-top text-muted bg-dark">
             <div class="container">
                 <div class="row py-3">
-                    <div class="col-12 col-md-6 text-center">
+                    <div class="col-12 col-md-6 text-center ">
                         <a class="text-decoration-none link-secondary " href="{{route('visitante.formasEntrega')}}">Formas de entrega</a><br>
                         <a class="text-decoration-none link-secondary " href="{{route('visitante.politicaGarantia')}}">Políticas de Garantia</a><br>
-                        <a class="text-decoration-none link-secondary " href="#">Políticas de privacidade (em construção)</a><br>
-                        <a class="text-decoration-none link-secondary" href="#">Termos de uso (em construção)</a><br>
+                        {{-- <a class="text-decoration-none link-secondary " href="#">Políticas de privacidade (em construção)</a><br>
+                        <a class="text-decoration-none link-secondary" href="#">Termos de uso (em construção)</a><br> --}}
                     </div>
                     <div class="col-12 col-md-6 text-center ">
 
-                        <span class="text-secondary">Contatos:</span><br>
                         <a href="https://www.facebook.com/CriterionTecnologia/" class="text-decoration-none link-secondary">
-                            <i class="fa-brands fa-facebook " style="color: #000000;"></i>
+                            <i class="fa-brands fa-facebook " style="color: #166cff;"></i>
                             Facebook
                         </a><br>
 
                         <a  class="text-decoration-none link-secondary">
-                            <i class="fa-brands fa-whatsapp" style="color: #000000;"></i>
-                            (091) 98017-5325
+                            <i class="fa-brands fa-whatsapp" style="color: #00ff15;"></i>
+                            (91) 98017-5325
                         </a><br>
 
                         <a href="mailto:ct@gmail.com" class="text-decoration-none link-secondary">
-                            <i class="fa-regular fa-envelope" style="color: #000000;"></i>
+                            <i class="fa-regular fa-envelope" style="color: #c5c5c5;"></i>
                             ssd@criteriontecnologia.store
                         </a><br>
                     </div>

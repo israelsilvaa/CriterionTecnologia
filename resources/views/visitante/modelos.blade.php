@@ -38,7 +38,7 @@
                                     </a>
                                     {{-- <img src="{{ url("storage/modelos/nx.png") }}" class="card-img-top" alt="..."> --}}
                                     <img src="{{ url("storage/{$ssd->imagem_card}")}}" class="card-img-top" alt="...">
-                                    <div class="card-header">
+                                    <div class="card-header text-secondary">
                                         R$ {{$ssd->preco}} à vista
                                     </div>
                                     <div class="card-body">
@@ -46,13 +46,9 @@
                                         <p class="card-text truncar-3l">{{$ssd->modelo}}, leitura:{{$ssd->leitura}}, escrita: {{$ssd->escrita}}, para {{$ssd->aplicacao}}</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href=" produto/{{$ssd->modelo_id}}/{{$ssd->disponibilidade}}" class="btn btn-secondary  mt-2 d-block">
-                                            <small>ver mais</small>
-                                        </a><br>
-                                        <small class="text-danger">
-                                            <b>Produto esgotado</b>
-                                        </small>
+                                        <a href=" produto/{{$ssd->modelo_id}}/{{$ssd->disponibilidade}}" class="btn btn-secondary  mt-2 d-inline">ver mais</a><br>
                                     </div>
+                                    <small class="text-danger m-2"><b>Produto esgotado</b></small>
                                 </div>
                             </div>
                         @endif
