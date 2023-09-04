@@ -6,12 +6,12 @@
 
     <main class="flex-fill">
         <div class="container">
-            <div class="row g-3 text-white">
+            <div class="row g-3 text-white d-flex  justify-content-center ">
                 <h4>Modelos e disponibilidade</h4>
                 @isset($modelos)
                     @foreach ($modelos as $ssd)
                         @if ($ssd->disponibilidade)
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="col-10 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                                 <div class="card text-center text-white  cor-texto-card bg-dark">
                                     <a href="#" class="position-absolute end-0 p-2 text-danger">
                                         <i class="bi bi-suit-heart" style="font-size: 20px; line-height: 20px"></i>
@@ -25,13 +25,13 @@
                                         <p class="card-text truncar-3l">{{$ssd->modelo}}, leitura:{{$ssd->leitura}}, escrita: {{$ssd->escrita}}, para {{$ssd->aplicacao}}</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href=" produto/{{$ssd->modelo_id}}/{{$ssd->disponibilidade}}" class="btn btn-success mt-2 d-block">Ver mais</a><br>
-                                        <small class="text-success">{{$ssd->disponibilidade}} unidades disponiveis</small>
+                                        <a href=" produto/{{$ssd->modelo_id}}/{{$ssd->disponibilidade}}" class="btn btn-success mt-2 d-inline">Ver mais</a><br>
                                     </div>
+                                    <small class="text-success m-2">{{$ssd->disponibilidade}} unidades disponiveis</small>
                                 </div>
                             </div>
                         @else
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="col-10 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                                 <div class="card text-center text-white bg-dark">
                                     <a href="#" class="position-absolute end-0 p-2 text-danger">
                                         <i class="bi bi-suit-heart" style="font-size: 20px; line-height: 20px"></i>

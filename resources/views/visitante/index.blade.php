@@ -19,42 +19,46 @@ xxl: 1400px --}}
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
+
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="6000">
-                    <img src="{{ url('storage/modelos/nx576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
-                    <img src="{{ url('storage/modelos/nx768.png') }}" class="d-none d-md-block d-lg-none w-100"
-                        alt="...">
-                    <img src="{{ url('storage/modelos/nx992.png') }}" class="d-none d-lg-block w-100" alt="992">
-                    <div class="carousel-caption ">
-
-                    </div>
+                    <a href="{{ route('visitante.modelos') }}">
+                        <img src="{{ url('storage/modelos/nx576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
+                        <img src="{{ url('storage/modelos/nx768.png') }}" class="d-none d-md-block d-lg-none w-100"
+                            alt="...">
+                        <img src="{{ url('storage/modelos/nx992.png') }}" class="d-none d-lg-block w-100" alt="992">
+                        <div class="carousel-caption ">
+                    </a>
                 </div>
-                <div class="carousel-item " data-bs-interval="6000">
+            </div>
+
+            <div class="carousel-item " data-bs-interval="6000">
+                <a href="{{ route('visitante.modelos') }}">
                     <img src="{{ url('storage/modelos/nt576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
                     <img src="{{ url('storage/modelos/nt768.png') }}" class="d-none d-md-block d-lg-none w-100"
                         alt="...">
                     <img src="{{ url('storage/modelos/nt992.png') }}" class="d-none d-lg-block w-100" alt="992">
+                </a>
+            </div>
 
-                </div>
-                <div class="carousel-item" data-bs-interval="6000">
+            <div class="carousel-item" data-bs-interval="6000">
+                <a href="{{ route('visitante.modelos') }}">
                     <img src="{{ url('storage/modelos/sata576.png') }}" class="d-sm-block d-md-none w-100" alt="...">
                     <img src="{{ url('storage/modelos/sata768.png') }}" class="d-none d-md-block d-lg-none w-100"
                         alt="...">
                     <img src="{{ url('storage/modelos/sata992.png') }}" class="d-none d-lg-block w-100" alt="992">
-
-                </div>
+                </a>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon"</span>
-                    <span class="visually-hidden">Next</span>
-            </button>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon"</span>
+                <span class="visually-hidden">Next</span>
+        </button>
+    </div>
     </div>
     <main class="flex-fill">
         <div class="container text-white">
