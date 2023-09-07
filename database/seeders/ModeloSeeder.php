@@ -25,7 +25,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 2;
         $modelo->dimensoes_id = 1;
         $modelo->preco = 190;
-        $modelo->imagem_card = "modelos/g5EjRv0mTRPKcWJy1COXb46ktNBwqA3kOoRvfyaQ.png";
         $modelo->save();
 
         $modelo = new Modelo();
@@ -39,7 +38,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 2;
         $modelo->dimensoes_id = 1;
         $modelo->preco = 220;
-        $modelo->imagem_card = "modelos/g5EjRv0mTRPKcWJy1COXb46ktNBwqA3kOoRvfyaQ.png";
         $modelo->save();
 
         $modelo = new Modelo();
@@ -53,7 +51,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 2;
         $modelo->dimensoes_id = 1;
         $modelo->preco = 400;
-        $modelo->imagem_card = "modelos/g5EjRv0mTRPKcWJy1COXb46ktNBwqA3kOoRvfyaQ.png";
         $modelo->save();
         
         // $modelo2->nome_modelo = 'Sata 2.5"';
@@ -68,7 +65,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 1;
         $modelo->dimensoes_id = 3;
         $modelo->preco = 130;
-        $modelo->imagem_card = "modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png";
         $modelo->save();
         
         $modelo = new Modelo();
@@ -82,7 +78,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 1;
         $modelo->dimensoes_id = 3;
         $modelo->preco = 200;
-        $modelo->imagem_card = "modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png";
         $modelo->save();
 
         $modelo = new Modelo();
@@ -96,7 +91,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 1;
         $modelo->dimensoes_id = 3;
         $modelo->preco = 380;
-        $modelo->imagem_card = "modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png";
         $modelo->save();
         
         //Netac 1
@@ -112,7 +106,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 2;
         $modelo->dimensoes_id = 2;
         $modelo->preco = 250;
-        $modelo->imagem_card = "modelos/aW7VNJWp8EfZpksNT0AiUGSOkGSL0wtaJFA7YxRt.png";
         $modelo->save();
 
         $modelo = new Modelo();
@@ -126,8 +119,6 @@ class ModeloSeeder extends Seeder
         $modelo->geracao_id = 2;
         $modelo->dimensoes_id = 2;
         $modelo->preco = 580;
-        $modelo->imagem_card = "modelos/aW7VNJWp8EfZpksNT0AiUGSOkGSL0wtaJFA7YxRt.png";
         $modelo->save();
-
     }
 }

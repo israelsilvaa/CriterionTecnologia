@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(dimensoesSeeder::class);
         $this->call(ModeloSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(imagensSeeder::class);
     }
 }

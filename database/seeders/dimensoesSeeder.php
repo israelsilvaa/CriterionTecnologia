@@ -31,7 +31,7 @@ class dimensoesSeeder extends Seeder
  
          //sata 2.5pl 2
          $dimensoes = new dimensoes();
-         $dimensoes->altura = 10;
+         $dimensoes->altura = 100;
          $dimensoes->largura = 70;
          $dimensoes->profundidade = 7;
          $dimensoes->unidade_medida = 'mm';
