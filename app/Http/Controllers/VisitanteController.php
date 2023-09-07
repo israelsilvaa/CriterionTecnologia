@@ -16,6 +16,7 @@ use App\Models\Produto;
 use App\Models\Tipo;
 use App\Models\Velocidade;
 use App\Models\Venda;
+use App\Models\imagem;
 
 class VisitanteController extends Controller
 {
@@ -55,6 +56,7 @@ class VisitanteController extends Controller
             $produto->aplicacao = Aplicacoes::where('id', '=', $modelo->aplicacao_id)->get()->pluck('nome_aplicacao')->first();
             $produto->leitura = Velocidade::where('id', '=', $modelo->velocidade_id)->get()->pluck('leitura')->first();
             $produto->escrita = Velocidade::where('id', '=', $modelo->velocidade_id)->get()->pluck('escrita')->first();
+            $produto->imagem_card = imagem::where('modelo_id', '=', $produto->modelo_id)->get()->pluck('imagem_card')->first();
             $produto->geracao = Geracao::where('id', '=', $modelo->geracao_id)->get()->pluck('geracao')->first();
             $produto->numero_serie = $produto->numero_serie;
 
@@ -79,6 +81,7 @@ class VisitanteController extends Controller
             ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
             ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
             ->join("dimensoes", "modelos.dimensoes_id", "=", "dimensoes.id")
+            ->join("imagens", "modelos.id", "=", "imagens.modelo_id")
             ->select(
                 "modelos.nome_produto as produto",
                 "modelos.preco",
@@ -95,7 +98,11 @@ class VisitanteController extends Controller
                 "dimensoes.largura",
                 "dimensoes.profundidade",
                 "dimensoes.unidade_medida",
-                "modelos.imagem_card",
+                "imagens.imagem_card",
+                "imagens.imagem_1",
+                "imagens.imagem_2",
+                "imagens.imagem_3",
+                "imagens.imagem_4",
             )
             ->where('modelos.id', $modelo_id)
             ->get()->first();
@@ -113,6 +120,7 @@ class VisitanteController extends Controller
             ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
             ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
             ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
+            ->join("imagens", "modelos.id", "=", "imagens.modelo_id")
             ->select(
                 "modelos.nome_produto as produto",
                 "modelos.preco",
@@ -125,7 +133,7 @@ class VisitanteController extends Controller
                 "aplicacoes.nome_aplicacao as aplicacao",
                 "geracoes.geracao",
                 "modelos.id as modelo_id",
-                "modelos.imagem_card",
+                "imagens.imagem_card",
             )
             ->orderBy('marcas.nome_marca')
             ->get();

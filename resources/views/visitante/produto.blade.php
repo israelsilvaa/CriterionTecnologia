@@ -11,21 +11,39 @@
                 <div class="col-12 col-sm-6">
                     <img src="{{ url("storage/{$modelo->imagem_card}") }}" class="img-thumbnail mt-2 bg-dark" id="imgProduto">
                     {{-- <img src="{{ url("storage/modelos/400x200.png") }}" class="img-thumbnail mt-2" id="imgProduto"> --}}
-                    {{-- <br class="clearfix">
+                    <br class="clearfix">
                     <div class="row my-3 gx-3">
-                        <div class="col-3">
-                            <img src="{{ asset('/storage/modelos/aW7VNJWp8EfZpksNT0AiUGSOkGSL0wtaJFA7YxRt.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
+                        <div class="col-2">
+                            <img src="{{ url("storage/{$modelo->imagem_card}") }}" class="img-thumbnail"
+                                onclick="trocarImagem(this)">
                         </div>
-                        <div class="col-3">
-                            <img src="{{ asset('/storage/modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
-                        </div>
-                        <div class="col-3">
-                            <img src="{{ asset('/storage/modelos/aW7VNJWp8EfZpksNT0AiUGSOkGSL0wtaJFA7YxRt.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
-                        </div>
-                        <div class="col-3">
-                            <img src="{{ asset('/storage/modelos/EuPdLApqrpUBy2BdmFfghtZcwU5gWf5Uv317lWJ2.png') }}" class="img-thumbnail" onclick="trocarImagem(this)">
-                        </div>
-                    </div> --}}
+                        @if ($modelo->imagem_1 != 'null')
+                            <div class="col-2">
+                                <img src="{{ url("storage/{$modelo->imagem_1}") }}" class="img-thumbnail"
+                                    onclick="trocarImagem(this)">
+                            </div>
+                        @endif
+                        @if ($modelo->imagem_2 != 'null')
+                            <div class="col-2">
+                                <img src="{{ url("storage/{$modelo->imagem_2}") }}" class="img-thumbnail"
+                                    onclick="trocarImagem(this)">
+                            </div>
+                        @endif
+                        @if ($modelo->imagem_3 != 'null')
+                            <div class="col-2">
+                                <img src="{{ url("storage/{$modelo->imagem_3}") }}" class="img-thumbnail"
+                                    onclick="trocarImagem(this)">
+                            </div>
+                        @endif
+
+                        @if ($modelo->imagem_4 != 'null')
+                            <div class="col-2">
+                                <img src="{{ url("storage/{$modelo->imagem_4}") }}" class="img-thumbnail"
+                                    onclick="trocarImagem(this)">
+                            </div>
+                        @endif
+
+                    </div>
                 </div>
                 <div class="col-12 col-sm-6 text-white">
                     <h1>{{ $modelo->produto }}</h1>

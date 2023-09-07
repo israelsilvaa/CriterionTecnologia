@@ -22,7 +22,7 @@
                 <div class="row ">
                     <div class="col-auto ">
                         <a href="/">
-                            <img src="{{ url('storage/modelos/logo.png') }}" width="150px" height="50px" alt="" />
+                            <img src="{{ url('storage/modelos/logo_1.png') }}" width="150px" height="50px" alt="" />
                         </a>
                     </div>
                 </div>

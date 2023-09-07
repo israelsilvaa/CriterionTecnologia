@@ -55,8 +55,8 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-floating">
-                                            <input type="number" name="preco" class="form-control"
-                                                id="floatingPassword" placeholder=" ">
+                                            <input type="number" name="preco" class="form-control" id="floatingPassword"
+                                                placeholder=" ">
                                             <label for="floatingPassword">Preço R$150</label>
                                         </div>
                                     </div>
@@ -105,13 +105,20 @@
                                                 {{ $dimensao->altura }}x{{ $dimensao->largura }}x{{ $dimensao->profundidade }}
                                             </option>
                                         @endforeach
-                                    </select><br/>
-                                </div>
-                                <div class="input-group mb-1">
+                                    </select><br />
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFileMultiple" class="form-label">Imagem</label>
-                                    <input class="form-control" name="imagem_card" type="file" id="formFileMultiple" multiple>
+                                    <label for="formFileMultiple" class="form-label">Imagens: Card, imagem_1, imagem_2, imagem_3, imagem_4</label>
+                                    <input class="form-control" name="imagem_card" type="file" id="formFileMultiple"
+                                        multiple>
+                                    <input class="form-control" name="imagem_1" type="file" id="formFileMultiple"
+                                        multiple>
+                                    <input class="form-control" name="imagem_2" type="file" id="formFileMultiple"
+                                        multiple>
+                                    <input class="form-control" name="imagem_3" type="file" id="formFileMultiple"
+                                        multiple>
+                                    <input class="form-control" name="imagem_4" type="file" id="formFileMultiple"
+                                        multiple>
                                     <button class="btn btn-success form-control" type="submit">cadastrar</button>
                                 </div>
                             </fieldset>

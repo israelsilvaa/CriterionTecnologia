@@ -24,7 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('aplicacao_id');
             $table->unsignedBigInteger('geracao_id');
             $table->unsignedBigInteger('dimensoes_id');
-            $table->string('imagem_card');
             $table->float('preco', 8, 2);
             $table->timestamps();
             
