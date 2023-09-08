@@ -6,12 +6,13 @@ body {
     min-height: 100vh;
 }
 
-p.truncar-3l {
+.truncar-3l {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 14px;
 }
 
 .fundo-dark {
@@ -23,4 +24,12 @@ p.truncar-3l {
 
 .texto {
     text-align: justify;
+}
+
+.no-pix{
+    font-size: 16px;
+}
+
+.no-cartao{
+    font-size: 10px;
 }

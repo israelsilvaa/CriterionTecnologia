@@ -18,10 +18,13 @@
                                     </a>
                                     <img src="{{ url("storage/{$ssd->imagem_card}")}}" class="card-img-top" alt="...">
                                     <div class="card-header text-success">
-                                        R${{$ssd->preco}} à vista
+                                        <small>
+                                            R${{$ssd->preco}} <span class="no-pix">à vista no Pix</span>
+                                        </small>
                                     </div>
+                                    {{-- <span class="no-cartao">4x de R${{$ssd->preco / 4}} sem juros no cartão de crédito</span> --}}
                                     <div class="card-body">
-                                        <h6 class="card-title">{{$ssd->produto}}</h6>
+                                        <h5 class="card-title">{{$ssd->produto}}</h5>
                                         <p class="card-text truncar-3l">{{$ssd->modelo}}, leitura:{{$ssd->leitura}}, escrita: {{$ssd->escrita}}, para {{$ssd->aplicacao}}</p>
                                     </div>
                                     <div class="card-footer">
@@ -39,10 +42,13 @@
                                     {{-- <img src="{{ url("storage/modelos/nx.png") }}" class="card-img-top" alt="..."> --}}
                                     <img src="{{ url("storage/{$ssd->imagem_card}")}}" class="card-img-top" alt="...">
                                     <div class="card-header text-secondary">
-                                        R$ {{$ssd->preco}} à vista
+                                        <small>
+                                            R$ {{$ssd->preco}} <span class="no-pix">à vista no Pix</span>
+                                        </small>
                                     </div>
+                                    {{-- <span class="no-cartao">4x de R${{$ssd->preco / 4}} sem juros no cartão de crédito</span> --}}
                                     <div class="card-body">
-                                        <h6 class="card-title">{{$ssd->produto}}</h6>
+                                        <h5 class="card-title">{{$ssd->produto}}</h5>
                                         <p class="card-text truncar-3l">{{$ssd->modelo}}, leitura:{{$ssd->leitura}}, escrita: {{$ssd->escrita}}, para {{$ssd->aplicacao}}</p>
                                     </div>
                                     <div class="card-footer">
@@ -99,6 +105,6 @@
                     </nav>
                 </div>
             </div>
-        </div>
-    </div> --}}
+        </div> --}}
+    </div>
 @endsection()

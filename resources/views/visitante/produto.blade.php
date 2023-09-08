@@ -81,7 +81,8 @@
                     </div>
 
                     @if ($disponibilidade)
-                        <h4 class="text-success text-center mt-2">R$ {{ $modelo->preco }} à vista</h4>
+                        <h5 class="text-success text-center mt-2">R$ {{ $modelo->preco }} à vista no Pix</h5>
+                        {{-- <p class=" text-center">ou 4x de R${{$modelo->preco / 4}} sem juros no cartão de crédito</p> --}}
                         <p class="text-center mt-2">
                             {{-- <a href="https://contate.me/criteriontecnologia" --}}
                             <a href="https://wa.me/55091980175325?text=olá, o {{ $modelo->produto }} ainda está dipsonivel?"
@@ -93,7 +94,8 @@
                                 </button> --}}
                         </p>
                     @else
-                        <h4 class="text-secondary text-center mt-2">R$ {{ $modelo->preco }} à vista</h4>
+                        <h5 class="text-secondary text-center mt-2">R$ {{ $modelo->preco }} à vista no Pix</h5>
+                        {{-- <p class=" text-center">ou 4x de R${{$modelo->preco / 4}} sem juros no cartão de crédito</p> --}}
                         <p class="text-center mt-2">
                             <a href="#" class="btn btn-lg btn-warning disabled mb-3 mb-xl-0 me-2">
                                 <i class="fa-solid fa-triangle-exclamation"></i>
