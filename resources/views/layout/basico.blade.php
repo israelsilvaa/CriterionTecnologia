@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    @livewireStyles
 </head>
 
 <body class="fundo-dark">
@@ -94,6 +95,7 @@
         </script>
         <script src="https://kit.fontawesome.com/bf4bab225b.js" crossorigin="anonymous"></script>
     </div>
+    @livewireScripts
 </body>
 
 </html>

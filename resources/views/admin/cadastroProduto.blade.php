@@ -4,6 +4,7 @@
 
 @section('conteudo')
     <div class="container bg-secondary text-center  mt-5 rounded-5">
+       
         <div>
             @livewire('cadastro-produto')
         </div>
