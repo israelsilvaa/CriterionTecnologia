@@ -1,0 +1,3 @@
+Criar componente:
+    -php artisan make:livewire filtroModelos
+    - ele é importado na view, subistituindo ela dentro body()
