@@ -1,5 +1,4 @@
 <div>
-    <p class="text-white">teste</p>
     <div class="container">
         <div class="row g-3 text-white d-flex  justify-content-center ">
             <div class="row pb-3">
@@ -11,10 +10,10 @@
                             <select class="form-select form-select-sm" name="filtrar_por" 
                                 wire:model="filtro"
                                 wire:change="filtrarModelos">
+                                <option value="preco">preço</option>
                                 <option value="marca">Marca</option>
                                 <option value="tipo">Tipo</option>
                                 <option value="capacidade">capacidade</option>
-                                <option value="preco">preço</option>
                             </select>
                         </form>
 
