@@ -61,7 +61,7 @@ Route::middleware('autenticacao')->prefix('/admin')->group(function(){
 });
 
 Route::prefix('/cliente')->group(function(){
-    Route::get('/painel', [ClienteController::class, 'viewPainel'])->name('cliente.painel');
+    Route::get('/painel', [ClienteController::class, 'viewPainel'])->name('cliente.index');
 });
 
 // Route::fallback(function(){

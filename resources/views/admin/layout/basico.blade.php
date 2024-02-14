@@ -55,6 +55,9 @@
                             <li class="nav-item">
                                 <a class="nav-link link-secondary" href="{{ route('admin.cadastroVenda') }}">Cadastrar venda</a>
                             </li>
+                            @isset(Auth::user()->name)
+                                <a class="nav-link disabled link-success"> {{ Auth::user()->name }} </a>    
+                            @endisset()
                             <li class="nav-item">
                                 <a class="nav-link link-danger"
                                 href="{{ route('admin.sair') }}">Sair</a>

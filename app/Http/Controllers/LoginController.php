@@ -27,7 +27,7 @@ class LoginController extends Controller
             return redirect()->route('admin.painel');
 
         }elseif(Auth::attempt($credentials) and Auth::user()->perfil_id == 2){
-            return redirect()->route('cliente.painel');
+            return redirect()->route('cliente.index');
         }
     
         return redirect()->route('login');
@@ -56,7 +56,7 @@ class LoginController extends Controller
 
     public function sair(){
 
-        session_destroy();
+        Auth::logout();
         return redirect()->route('index');
     }
 }

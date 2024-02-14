@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>@yield('titulo')</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     @livewireStyles
@@ -23,7 +23,8 @@
                 <div class="row ">
                     <div class="col-auto ">
                         <a href="/">
-                            <img src="{{ url('storage/modelos/logo_1.png') }}" width="150px" height="50px" alt="" />
+                            <img src="{{ url('storage/modelos/logo_1.png') }}" width="150px" height="50px"
+                                alt="" />
                         </a>
                     </div>
                 </div>
@@ -32,26 +33,45 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav flex-grow-1 ">
+
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link link-secondary" href="{{ route('login') }}">Área do administrador</a>
+
+                            @isset(Auth::user()->name)
+                                <a class="nav-link disabled link-success">
+                                    <i class="fa-solid fa-circle-user"></i> 
+                                    {{ Auth::user()->name }} 
+                                </a>
+                            @else
+                                <a class="nav-link link-secondary" href="{{ route('login') }}">Login</a>
+                                {{-- <a class="nav-link link-secondary" href="#">registrar-se</a> --}}
+                            @endisset()
+
                         </li>
                     </ul>
+
                     <div class="align-self-end">
                         <ul class="navbar-nav">
                             <li class="nav-item ">
-                                <a class="nav-link link-secondary " aria-current="page" href="/">Pagina inicial</a>
+                                <a class="nav-link link-secondary " aria-current="page" href="/">Pagina
+                                    inicial</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link link-secondary" href="{{ route('visitante.modelos') }}">Modelos e
                                     disponibilidade</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-secondary" href="{{ route('visitante.garantia') }}">Consulta de garantia</a>
+                                <a class="nav-link link-secondary" href="{{ route('visitante.garantia') }}">Consulta de
+                                    garantia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-secondary" href="{{ route('visitante.sobre-nos') }}">Sobre-nós</a>
+                                <a class="nav-link link-secondary"
+                                    href="{{ route('visitante.sobre-nos') }}">Sobre-nós</a>
                             </li>
+                            
+                            @isset(Auth::user()->name)
+                                <a class="nav-link link-danger" href="{{route('admin.sair')}}">sair </a>
+                            @endisset()
                         </ul>
                     </div>
                 </div>
@@ -64,19 +84,22 @@
             <div class="container">
                 <div class="row py-3">
                     <div class="col-12 col-md-6 text-center ">
-                        <a class="text-decoration-none link-secondary " href="{{route('visitante.formasEntrega')}}">Formas de entrega</a><br>
-                        <a class="text-decoration-none link-secondary " href="{{route('visitante.politicaGarantia')}}">Políticas de Garantia</a><br>
+                        <a class="text-decoration-none link-secondary "
+                            href="{{ route('visitante.formasEntrega') }}">Formas de entrega</a><br>
+                        <a class="text-decoration-none link-secondary "
+                            href="{{ route('visitante.politicaGarantia') }}">Políticas de Garantia</a><br>
                         {{-- <a class="text-decoration-none link-secondary " href="#">Políticas de privacidade (em construção)</a><br>
                         <a class="text-decoration-none link-secondary" href="#">Termos de uso (em construção)</a><br> --}}
                     </div>
                     <div class="col-12 col-md-6 text-center ">
 
-                        <a href="https://www.facebook.com/CriterionTecnologia/" class="text-decoration-none link-secondary">
+                        <a href="https://www.facebook.com/CriterionTecnologia/"
+                            class="text-decoration-none link-secondary">
                             <i class="fa-brands fa-facebook " style="color: #166cff;"></i>
                             Facebook
                         </a><br>
 
-                        <a  class="text-decoration-none link-secondary">
+                        <a class="text-decoration-none link-secondary">
                             <i class="fa-brands fa-whatsapp" style="color: #00ff15;"></i>
                             (91) 98017-5325
                         </a><br>
