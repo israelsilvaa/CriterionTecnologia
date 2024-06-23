@@ -12,7 +12,7 @@
 </head>
 
 <body class="bg-dark">
-    <div class="d-flex flex-column ">
+    <div class="d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary border-bottom shadow-sm mb-3">
             <div class="container ">
                 <div class="row ">

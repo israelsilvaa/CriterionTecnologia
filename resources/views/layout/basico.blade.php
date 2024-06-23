@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('vendor/livewire/livewire.js') }}"> --}}
     @livewireStyles
 </head>
 
@@ -39,8 +40,8 @@
 
                             @isset(Auth::user()->name)
                                 <a class="nav-link disabled link-success">
-                                    <i class="fa-solid fa-circle-user"></i> 
-                                    {{ Auth::user()->name }} 
+                                    <i class="fa-solid fa-circle-user"></i>
+                                    {{ Auth::user()->name }}
                                 </a>
                             @else
                                 <a class="nav-link link-secondary" href="{{ route('login') }}">Login</a>
@@ -68,9 +69,9 @@
                                 <a class="nav-link link-secondary"
                                     href="{{ route('visitante.sobre-nos') }}">Sobre-nós</a>
                             </li>
-                            
+
                             @isset(Auth::user()->name)
-                                <a class="nav-link link-danger" href="{{route('admin.sair')}}">sair </a>
+                                <a class="nav-link link-danger" href="{{ route('admin.sair') }}">sair </a>
                             @endisset()
                         </ul>
                     </div>
