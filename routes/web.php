@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserFavoritosController;
 use App\Http\Controllers\VisitanteController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,7 @@ Route::middleware('autenticacao')->prefix('/admin')->group(function(){
 
 Route::prefix('/cliente')->group(function(){
     Route::get('/painel', [ClienteController::class, 'viewPainel'])->name('cliente.index');
+    Route::get('/favoritar/{modelo_id}', [UserFavoritosController::class, 'favoritar'])->name('cliente.favoritar');
 });
 
 // Route::fallback(function(){

@@ -18,7 +18,7 @@
                     @elseif(old('numero_serie'))
                         value="{{ old('numero_serie') }}" 
                     @else
-                        placeholder="NV3000-500GB"
+                        placeholder=" Tente 123 ;)"
                     @endif
                     >
                         <button type="submit" class="btn btn-success">
