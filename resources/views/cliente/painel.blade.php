@@ -16,7 +16,7 @@
 
         <div class="row col-6 offset-3 mt-4 ">
             <footer class="text-danger text-center">
-                <a href="/" class="link link-info text-dark"> Sair</a>
+                <a class="nav-link link-danger" href="{{ route('admin.sair') }}">Sair</a>
             </footer>
         </div>
     </div>

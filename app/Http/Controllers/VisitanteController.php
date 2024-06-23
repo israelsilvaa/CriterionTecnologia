@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GarantiaRequest;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\VendaRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Aplicacoes;
-use App\Models\Capacidade;
-use App\Models\Geracao;
-use App\Models\Marca;
-use App\Models\Modelo;
-use App\Models\Produto;
 use App\Models\Tipo;
-use App\Models\Velocidade;
+use App\Models\Marca;
 use App\Models\Venda;
 use App\Models\imagem;
+use App\Models\Modelo;
+use App\Models\Geracao;
+use App\Models\Produto;
+use App\Models\Aplicacoes;
+use App\Models\Capacidade;
+use App\Models\Velocidade;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\VendaRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\GarantiaRequest;
 
 class VisitanteController extends Controller
 {
@@ -114,36 +115,37 @@ class VisitanteController extends Controller
     public function modelos()
     {
         $modelos = DB::table("modelos")
-            ->join("marcas", "modelos.marca_id", "=", "marcas.id")
-            ->join("tipos", "modelos.tipo_id", "=", "tipos.id")
-            ->join("capacidades", "modelos.capacidade_id", "=", "capacidades.id")
-            ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
-            ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
-            ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
-            ->join("imagens", "modelos.id", "=", "imagens.modelo_id")
-            ->select(
-                "modelos.nome_produto as produto",
-                "modelos.preco",
-                "marcas.nome_marca as marca",
-                "modelos.nome_modelo as modelo",
-                "tipos.nome_tipo as tipo",
-                "capacidades.capacidade",
-                "velocidades.leitura",
-                "velocidades.escrita",
-                "aplicacoes.nome_aplicacao as aplicacao",
-                "geracoes.geracao",
-                "modelos.id as modelo_id",
-                "imagens.imagem_card",
-            )
-            ->orderBy('marcas.nome_marca')
-            ->get();
+        ->join("marcas", "modelos.marca_id", "=", "marcas.id")
+        ->join("tipos", "modelos.tipo_id", "=", "tipos.id")
+        ->join("capacidades", "modelos.capacidade_id", "=", "capacidades.id")
+        ->join("velocidades", "modelos.velocidade_id", "=", "velocidades.id")
+        ->join("aplicacoes", "modelos.aplicacao_id", "=", "aplicacoes.id")
+        ->join("geracoes", "modelos.geracao_id", "=", "geracoes.id")
+        ->join("imagens", "modelos.id", "=", "imagens.modelo_id")
+      
+        ->select(
+            "modelos.nome_produto as produto",
+            "modelos.preco",
+            "marcas.nome_marca as marca",
+            "modelos.nome_modelo as modelo",
+            "tipos.nome_tipo as tipo",
+            "capacidades.capacidade",
+            "velocidades.leitura",
+            "velocidades.escrita",
+            "aplicacoes.nome_aplicacao as aplicacao",
+            "geracoes.geracao",
+            "modelos.id as modelo_id",
+            "imagens.imagem_card",
+        )
+        ->orderBy('marcas.nome_marca')
+        ->get();
 
         foreach ($modelos as $ssd) {
             $ssd->disponibilidade = Produto::where('modelo_id', $ssd->modelo_id)->where('status', "Em estoque")->count();
         }
         $modelos = $modelos->sortByDesc('disponibilidade');
 
-        // dd($modelos);
+        // dd($modelos);    
 
 
         return view('visitante.modelos', ['modelos' => $modelos]);
